@@ -1,8 +1,7 @@
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { getAuth, updateProfile } from "firebase/auth";
+import { db } from './firebase';
 
-// Initialize Firestore
-const db = getFirestore();
 const auth = getAuth();
 
 /**
@@ -15,11 +14,11 @@ export const updateUserProfile = async (userId, profileData) => {
     const userRef = doc(db, "users", userId);
     await setDoc(userRef, profileData, { merge: true });
 
-    // If displayName or photoURL is updated, also update Firebase Auth profile
-    if (profileData.displayName || profileData.photoURL) {
+    // Ensure auth.currentUser is available before updating Firebase Auth profile
+    if (auth.currentUser && (profileData.displayName || profileData.photoURL)) {
       await updateProfile(auth.currentUser, {
-        displayName: profileData.displayName,
-        photoURL: profileData.photoURL,
+        displayName: profileData.displayName || "",
+        photoURL: profileData.photoURL || "",
       });
     }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
-import { getUser, updateUserProfile } from '../firebase/firebaseUtils'; // Import helper functions
+import { getUser, updateUserProfile } from '../firebase/firebaseUtils';
 
 const Profile = () => {
   const auth = getAuth();

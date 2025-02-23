@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Make sure you have a logo image in assets folder
+import logo from '../assets/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Profile from './components/Profile';
 import { Navigate } from 'react-router-dom';

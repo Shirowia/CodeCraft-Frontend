@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase'; // Import Firebase Auth
+import { auth } from '../firebase/firebase'; // Import Firebase Auth
 import { updateUserProfile } from '../firebase/firebaseUtils'; // Import Firestore helper
 import { useNavigate } from 'react-router-dom';
 

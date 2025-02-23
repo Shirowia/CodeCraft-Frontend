@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png'; // Make sure you have a logo image in assets folder
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -33,35 +35,43 @@ const Login = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="card p-4 shadow-lg" style={{ width: '400px' }}>
-        <h2 className="text-center mb-4">Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label>Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          {error && <p className="text-danger text-center">{error}</p>}
-          <button type="submit" className="btn btn-primary w-100">Login</button>
-        </form>
+    <div className="container vh-100 d-flex align-items-center justify-content-center">
+      <div className="row w-75 shadow-lg p-5 rounded">
+        {/* Left Side - Login Form */}
+        <div className="col-md-6 d-flex flex-column justify-content-center">
+          <h2 className="text-center mb-4">Login</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label">Email address</label>
+              <input
+                type="email"
+                className="form-control"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {error && <p className="text-danger text-center">{error}</p>}
+            <button type="submit" className="btn btn-primary w-100">Login</button>
+          </form>
+        </div>
+        
+        {/* Right Side - Logo */}
+        <div className="col-md-6 d-flex align-items-center justify-content-center">
+          <img src={logo} alt="Logo" className="img-fluid" style={{ maxWidth: '80%' }} />
+        </div>
       </div>
     </div>
   );

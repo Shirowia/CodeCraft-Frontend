@@ -38,7 +38,7 @@
       <Router>
         <div className="container mt-4">
           {/* Pages; */}
-          <div className="mt-4 p-4 bg-white rounded shadow-sm">
+          <div className="mt-4 p-4 rounded shadow-sm">
           <Routes>
             <Route path="/menu" element={<PrivateRoute><Menu /></PrivateRoute>} />
             <Route path="/homepage" element={<Home />} /> 

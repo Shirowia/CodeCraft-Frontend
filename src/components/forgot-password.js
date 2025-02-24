@@ -46,15 +46,15 @@ const ForgotPassword = () => {
               </button>
             </form>
             <div className="text-center mt-3">
-              <Link to="/login" className="text-muted">
+              <Link to="/login" className="text-primary">
                 Back to Login
               </Link>
             </div>
           </div>
         </div>
-        <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <img src={logo} alt="Logo" className="img-fluid w-75" />
-        </div>
+              <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
+        <img src={logo} alt="Logo" className="img-fluid w-75" />
+      </div>
       </div>
     </div>
   );

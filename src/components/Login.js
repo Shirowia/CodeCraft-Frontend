@@ -75,7 +75,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-        <div className="col-md-6 d-flex align-items-center justify-content-center">
+                <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
           <img src={logo} alt="Logo" className="img-fluid w-75" />
         </div>
       </div>

@@ -4,6 +4,8 @@ import { auth } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/general.css';
+import '../styles/login.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -35,6 +37,7 @@ const Login = () => {
   };
 
   return (
+    <body>
     <div className="container vh-100 d-flex align-items-center justify-content-center">
       <div className="row w-75 shadow-lg p-5 rounded">
         {/* Left Side - Login Form */}
@@ -74,7 +77,9 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </body>
   );
 };
+
 
 export default Login;

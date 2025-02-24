@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import { getAuth } from 'firebase/auth';
 import '../styles/general.css';
 
+
 const App = () => {
   const PrivateRoute = ({ children }) => {
     const auth = getAuth();
@@ -26,6 +27,7 @@ const App = () => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/signup">Sign Up</Link>
                 </li>
+                <h1>Gay</h1>
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">Login</Link>
                 </li>

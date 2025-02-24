@@ -17,7 +17,7 @@ const Profile = () => {
     address: '',
   });
 
-  // Fetch user profile data on component mount
+  
   useEffect(() => {
     if (user) {
       const fetchProfile = async () => {

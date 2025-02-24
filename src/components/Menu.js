@@ -6,7 +6,7 @@ import { getAuth, signOut } from 'firebase/auth';
 const Menu = () => {
   const auth = getAuth();
   const user = auth.currentUser;
-  const displayName = user?.displayName || 'User'; // Fallback to 'User' if display name is not set
+  const displayName = user?.displayName || 'User';
 
   const handleLogout = () => {
     signOut(auth)

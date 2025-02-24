@@ -5,6 +5,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Menu from './components/Menu';
+import ForgotPassword from './components/forgot-password';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './styles/general.css';
 import Settings from './components/Settings';
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/menu" element={<PrivateRoute><Menu /></PrivateRoute>} />
             <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
             <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
+            <Route path="/forgot-password" element={user ? <Navigate to="/forgot-password" /> : <ForgotPassword />} />
             <Route path="/signup" element={user ? <Navigate to="/menu" /> : <Signup />} />
             <Route path="/login" element={user ? <Navigate to="/menu" /> : <Login />} />
             <Route path="/" element={<Navigate to={user ? "/menu" : "/login"} />} />

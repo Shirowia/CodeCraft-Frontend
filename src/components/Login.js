@@ -37,7 +37,6 @@ const Login = () => {
   };
 
   return (
-    <body>
     <div className="container vh-100 d-flex align-items-center justify-content-center">
       <div className="row w-75 shadow-lg p-5 rounded">
         {/* Left Side - Login Form */}
@@ -77,7 +76,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-    </body>
   );
 };
 

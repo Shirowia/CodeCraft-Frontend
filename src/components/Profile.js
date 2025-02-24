@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { getUser, updateUserProfile } from '../firebase/firebaseUtils';
+import '../styles/general.css';
 
 const Profile = () => {
   const auth = getAuth();

@@ -41,7 +41,7 @@
           <div className="mt-4 p-4 bg-white rounded shadow-sm">
           <Routes>
             <Route path="/menu" element={<PrivateRoute><Menu /></PrivateRoute>} />
-            <Route path="/homepage" element={<Home />} /> {/* Public Route */}
+            <Route path="/homepage" element={<Home />} /> 
             <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
             <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
             <Route path="/forgot-password" element={user ? <Navigate to="/forgot-password" /> : <ForgotPassword />} />

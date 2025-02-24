@@ -22,7 +22,7 @@ const Menu = () => {
     <div className="d-flex min-vh-100">
       {/* Sidebar */}
       <div className="d-flex flex-column p-3 bg-dark text-white" style={{ width: '250px' }}>
-        <h2 className="text-center mb-4">CodeCraft</h2>
+        <h2 className="text-center mb-4 ">CodeCraft</h2>
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
             <Link to="/lessons" className="nav-link text-white">Lessons</Link>
@@ -41,7 +41,7 @@ const Menu = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow-1 p-5 bg-light">
+      <div className="flex-grow-1 text-black p-5 bg-light">
         <h1>Hello, {displayName}</h1>
         <p>Welcome to CodeCraft! Continue your journey by selecting a section from the sidebar.</p>
         <div className="d-flex gap-3 mt-4">

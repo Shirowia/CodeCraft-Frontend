@@ -34,7 +34,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="container mt-5 p-5 bg-light rounded shadow">
+    <div className="container mt-5 p-5 bg-light text-black rounded shadow">
       <h2 className="mb-4">Settings</h2>
       {successMessage && <Alert variant="success">{successMessage}</Alert>}
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Adjust the path if necessary
+import logo from '../assets/logo.png';
 
 const HomePage = () => {
   return (
     <div
       className="d-flex flex-column justify-content-center align-items-center vh-100"
-      style={{ backgroundColor: '#1e1e2f' }}
+      style={{ backgroundColor: '#000000' }}
     >
       <img
         src={logo}

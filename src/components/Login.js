@@ -70,7 +70,7 @@ const Login = () => {
         
         {/* Right Side - Logo */}
         <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <img src={logo} alt="Logo" className="img-fluid" style={{ maxWidth: '80%' }} />
+          <img src={logo} alt="Logo" className="img-fluid w-75" />
         </div>
       </div>
     </div>

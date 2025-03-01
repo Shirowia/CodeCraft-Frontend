@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase/firebase'; // Import Firebase Auth
-import { updateUserProfile } from '../firebase/firebaseUtils'; // Import Firestore helper
-import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png'; // Adjust path as needed
+import { auth } from '../firebase/firebase';
+import { updateUserProfile } from '../firebase/firebaseUtils';
+import { useNavigate, Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+import '../styles/general.css';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,6 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Create a new user with Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         formData.email,
@@ -30,7 +30,6 @@ const Signup = () => {
       );
       const user = userCredential.user;
 
-      // Store user details in Firestore using the helper function
       const success = await updateUserProfile(user.uid, {
         fullName: formData.fullName,
         email: formData.email,
@@ -42,7 +41,7 @@ const Signup = () => {
       if (success) {
         console.log('User signed up and profile created:', user.uid);
         setError('');
-        navigate('/profile'); // Redirect to profile page after signup
+        navigate('/profile');
       } else {
         setError('Error creating profile.');
       }
@@ -94,11 +93,17 @@ const Signup = () => {
               {error && <p className="text-danger">{error}</p>}
               <button type="submit" className="btn btn-primary w-100">Sign Up</button>
             </form>
+            <p className="text-center mt-2">
+              <small>
+                Already have an account? <Link to="/login">Login</Link>
+              </small>
+            </p>
           </div>
         </div>
-        <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <img src={logo} alt="Logo" className="img-fluid w-75" />
-        </div>
+              <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
+        <img src={logo} alt="Logo" className="img-fluid w-75" />
+      </div>
+
       </div>
     </div>
   );

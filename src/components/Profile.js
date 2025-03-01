@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { getUser, updateUserProfile } from '../firebase/firebaseUtils';
+import '../styles/general.css';
 
 const Profile = () => {
   const auth = getAuth();
@@ -16,7 +17,7 @@ const Profile = () => {
     address: '',
   });
 
-  // Fetch user profile data on component mount
+  
   useEffect(() => {
     if (user) {
       const fetchProfile = async () => {

@@ -1,84 +1,93 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import '../styles/general.css';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
+
     try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      setError('');
-      navigate('/menu'); // Redirect to menu page after login
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/menu');
     } catch (err) {
-      setError('Invalid email or password.');
+      setError(getErrorMessage(err.code));
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Function to convert Firebase error codes into user-friendly messages
+  const getErrorMessage = (code) => {
+    const errorMessages = {
+      'auth/invalid-email': 'Invalid email format.',
+      'auth/user-not-found': 'No user found with this email.',
+      'auth/wrong-password': 'Incorrect password. Try again.',
+      'auth/user-disabled': 'This account has been disabled.',
+      'auth/too-many-requests': 'Too many login attempts. Try again later.',
+    };
+    return errorMessages[code] || 'Failed to login. Please try again.';
+  };
+
   return (
-    <div className="container vh-100 d-flex align-items-center">
+    <div className="container vh-100 d-flex align-items-center justify-content-center">
       <div className="row w-100">
+        {/* Login Form */}
         <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <div className="shadow-lg p-5 rounded w-75">
+          <div className="shadow-lg p-5 rounded w-75 dark-mode">
             <h2 className="text-center mb-4">Login</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label>Email address</label>
+                <label htmlFor="email">Email Address</label>
                 <input
                   type="email"
+                  id="email"
                   className="form-control"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
+                  aria-label="Enter your email"
                 />
               </div>
               <div className="mb-3">
-                <label>Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   type="password"
+                  id="password"
                   className="form-control"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
+                  aria-label="Enter your password"
                 />
               </div>
               {error && <p className="text-danger">{error}</p>}
-              <button type="submit" className="btn btn-primary w-100">Login</button>
+              <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                {loading ? 'Logging in...' : 'Login'}
+              </button>
             </form>
-            <p className="text-center mt-3">
-              Don't have an account?{' '}
-              <span className="text-primary" style={{ cursor: 'pointer' }} onClick={() => navigate('/signup')}>
-                Sign Up
-              </span>
-              </p>
-              <p className="text-center mt-3">
-              {' '}
-              <span className="text-primary" style={{ cursor: 'pointer' }} onClick={() => navigate('/forgot-password')}>
-                Forgot Password?
-              </span>
-            </p>
+            <div className="text-center mt-3">
+              <Link to="/forgot-password" className="text-primary">Forgot Password?</Link>
+            </div>
+            <div className="text-center mt-2">
+              Don't have an account? <Link to="/signup" className="text-primary">Sign Up</Link>
+            </div>
           </div>
         </div>
-        
-        {/* Right Side - Logo */}
-        <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <img src={logo} alt="Logo" className="img-fluid" style={{ maxWidth: '80%' }} />
+
+        {/* Logo Section */}
+        <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
+          <img src={logo} alt="CodeCraft Logo" className="img-fluid w-75" />
         </div>
       </div>
     </div>

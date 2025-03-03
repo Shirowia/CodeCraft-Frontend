@@ -1,58 +1,67 @@
-  import React, { useEffect, useState } from 'react';
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-  import Signup from './components/Signup';
-  import Login from './components/Login';
-  import Profile from './components/Profile';
-  import Home from './components/Homepage';
-  import Menu from './components/Menu';
-  import ForgotPassword from './components/forgot-password';
-  import { getAuth, onAuthStateChanged } from 'firebase/auth';
-  import './styles/general.css';
-  import Settings from './components/Settings';
+import React, { useEffect, useState, useMemo } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Home from './components/Homepage';
+import Menu from './components/Menu';
+import ForgotPassword from './components/forgot-password';
+import Settings from './components/Settings';
+import DailyChallenge from './components/DailyChallenge';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import './styles/general.css';
 
-  const App = () => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const auth = getAuth();
+// Private Route Component
+const PrivateRoute = ({ user, children }) => {
+  return user ? children : <Navigate to="/login" />;
+};
 
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-        setLoading(false);
-      });
+const App = () => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
+  // Use useMemo to prevent unnecessary re-renders
+  const auth = useMemo(() => getAuth(), []);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, [auth]);
 
-      return () => unsubscribe();
-    }, [auth]);
-
-    const PrivateRoute = ({ children }) => {
-      return user ? children : <Navigate to="/login" />;
-    };    
-
-    if (loading) {
-      return <div>Loading...</div>; 
-    }
-
+  if (loading) {
     return (
-      <Router>
-        <div className="container mt-4">
-          {/* Pages; */}
-          <div className="mt-4 p-4 rounded shadow-sm">
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <Router>
+      <div className="container mt-4">
+        {/* Main Content */}
+        <div className="mt-4 p-4 rounded shadow-sm">
           <Routes>
-            <Route path="/menu" element={<PrivateRoute><Menu /></PrivateRoute>} />
-            <Route path="/homepage" element={<Home />} /> 
-            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-            <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
-            <Route path="/forgot-password" element={user ? <Navigate to="/forgot-password" /> : <ForgotPassword />} />
-            <Route path="/signup" element={user ? <Navigate to="/menu" /> : <Signup />} />
-            <Route path="/login" element={user ? <Navigate to="/menu" /> : <Login />} />
+            <Route path="/menu" element={<PrivateRoute user={user}><Menu /></PrivateRoute>} />
+            <Route path="/daily-challenge" element={<PrivateRoute user={user}><DailyChallenge /></PrivateRoute>} />
+            <Route path="/homepage" element={<Home />} />
+            <Route path="/profile" element={<PrivateRoute user={user}><Profile /></PrivateRoute>} />
+            <Route path="/settings" element={<PrivateRoute user={user}><Settings /></PrivateRoute>} />
+            <Route path="/forgot-password" element={!user ? <ForgotPassword /> : <Navigate to="/menu" />} />
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/menu" />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/menu" />} />
             <Route path="/" element={<Navigate to="/homepage" />} />
           </Routes>
-          </div>
         </div>
-      </Router>
-    );
-  };
+      </div>
+    </Router>
+  );
+};
 
-  export default App;
+export default App;

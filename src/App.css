@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+.dark-mode {
+  background-color: #121212 !important;
+  color: white !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -14,7 +20,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1a1d23; /* Darker for better contrast */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,10 +28,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode .App-header {
+  background-color: #181b20;
 }
 
 .App-link {
   color: #61dafb;
+  transition: color 0.3s;
+}
+
+.dark-mode .App-link {
+  color: #4fa3d1; /* Slightly dimmer for dark mode */
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +51,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Additional Enhancements */
+button {
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode button {
+  background-color: #333;
+  color: white;
+}
+
+input, textarea, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
 }

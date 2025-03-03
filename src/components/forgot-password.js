@@ -9,17 +9,40 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email.trim()) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    setMessage('');
+
     try {
       await sendPasswordResetEmail(auth, email);
       setMessage('Password reset link sent! Check your email.');
-      setError('');
+      setEmail('');
     } catch (err) {
-      setError(err.message);
-      setMessage('');
+      setError(getErrorMessage(err.code));
+    } finally {
+      setLoading(false);
     }
+  };
+
+  // Function to handle Firebase errors more user-friendly
+  const getErrorMessage = (code) => {
+    const errorMessages = {
+      'auth/invalid-email': 'Invalid email address format.',
+      'auth/user-not-found': 'No account found with this email.',
+      'auth/network-request-failed': 'Network error. Try again later.',
+      default: 'Failed to send reset email. Please try again.',
+    };
+    return errorMessages[code] || errorMessages.default;
   };
 
   return (
@@ -37,12 +60,13 @@ const ForgotPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  disabled={loading}
                 />
               </div>
               {message && <p className="text-success">{message}</p>}
               {error && <p className="text-danger">{error}</p>}
-              <button type="submit" className="btn btn-primary w-100">
-                Send Reset Link
+              <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                {loading ? 'Sending...' : 'Send Reset Link'}
               </button>
             </form>
             <div className="text-center mt-3">
@@ -52,9 +76,9 @@ const ForgotPassword = () => {
             </div>
           </div>
         </div>
-              <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
-        <img src={logo} alt="Logo" className="img-fluid w-75" />
-      </div>
+        <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
+          <img src={logo} alt="Logo" className="img-fluid w-75" />
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { db } from '../firebase/firebase';
 
 const Learn = () => {
   const [learningResources, setLearningResources] = useState([]);
-  const [courseraCourses, setCourseraCourses] = useState([
+  const [courseraCourses] = useState([
     {
       name: "Data Structures and Algorithms Specialization",
       description: "Learn to design, implement, and analyze algorithms for solving computational problems.",

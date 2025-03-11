@@ -6,10 +6,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import '../styles/general.css';
 
+const MAX_FILE_SIZE = 1048576; // 1MB in bytes
+
 const Communities = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [file, setFile] = useState(null);
+  const [fileError, setFileError] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
   const user = auth.currentUser;
@@ -25,12 +28,20 @@ const Communities = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (newMessage.trim() === '' && !file) return;
 
     let fileURL = null;
     if (file) {
+      if (file.size > MAX_FILE_SIZE) {
+        setFileError('File size exceeds the 1MB limit.');
+        return;
+      }
       const reader = new FileReader();
       reader.onloadend = async () => {
         fileURL = reader.result;
@@ -52,6 +63,7 @@ const Communities = () => {
 
     setNewMessage('');
     setFile(null);
+    setFileError('');
     scrollToBottom();
   };
 
@@ -140,8 +152,12 @@ const Communities = () => {
             <input
               type="file"
               className="form-control"
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+                setFileError('');
+              }}
             />
+            {fileError && <div className="text-danger">{fileError}</div>}
           </div>
           <button type="submit" className="btn btn-primary">Send</button>
         </form>

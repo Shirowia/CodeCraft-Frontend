@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { getUser, updateUserProfile } from '../firebase/firebaseUtils';
-import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
+import Navigation from './Navigation';
 import '../styles/general.css';
 
 const Profile = () => {
@@ -19,8 +19,6 @@ const Profile = () => {
     sex: '',
     address: '',
   });
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   useEffect(() => {
     if (user) {
@@ -60,36 +58,10 @@ const Profile = () => {
     }
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   return (
     <div className="d-flex vh-100">
-      <div className={`bg-dark text-white p-3 d-flex flex-column ${isSidebarOpen ? 'd-block' : 'd-none'}`} style={{ width: '250px' }}>
-        <div className="text-center mb-4">
-          <img src={logo} alt="Logo" height="50" />
-          <h4 className="mt-2">CodeCraft</h4>
-        </div>
-        <ul className="nav flex-column flex-grow-1">
-          <li className="nav-item"><Link className="nav-link text-white" to="/menu">Menu</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white active" to="/profile">Profile</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">Skill Tree</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/learn">Learn</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white active" to="/communities">Communities</Link></li>
-        </ul>
-
-        <ul className="nav flex-column">
-          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100"> Settings</button></Link></li>
-          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>Logout</button></li>
-        </ul>
-      </div>
-
+      <Navigation handleLogout={handleLogout} />
       <div className="flex-grow-1 p-4">
-        <button className="btn btn-primary mb-3" onClick={toggleSidebar}>
-          {isSidebarOpen ? 'Hide Menu' : 'Show Menu'}
-        </button>
         <h2>User Profile</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

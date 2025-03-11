@@ -26,7 +26,6 @@ body {
   }
   
 
-
 .dark-mode {
     background-color: #121212 !important;
     color: #ffffff !important;
@@ -53,4 +52,108 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.learn-container, .skilltree-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.learn-title, .skilltree-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.resources-section, .courses-section, .skilltree-list {
+  margin-bottom: 30px;
+}
+
+.resources-list, .courses-list, .subskill-list, .subsubskill-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resource-item, .course-item, .skill-item, .subskill-item, .subsubskill-item {
+  margin-bottom: 15px;
+}
+
+.resource-link, .course-link, .skill-name, .subskill-name, .subsubskill-name {
+  font-size: 1.2em;
+  color: #0d6efd; /* Bootstrap primary blue */
+  text-decoration: none;
+}
+
+.resource-link:hover, .course-link:hover {
+  text-decoration: underline;
+}
+
+.resource-description, .course-description {
+  margin: 5px 0;
+}
+
+.progress-container {
+  margin-top: 10px;
+}
+
+.progress-label {
+  font-size: 1em;
+}
+
+.progress-input {
+  width: 50px;
+  margin-left: 5px;
+}
+
+.completion-container, .skill-header, .subskill-header, .subsubskill-header {
+  display: flex;
+  align-items: center;
+}
+
+.completion-label, .skill-checkbox, .subskill-checkbox, .subsubskill-checkbox {
+  margin-left: 5px;
+}
+
+.completion-checkbox {
+  margin-left: 5px;
+}
+
+.skilltree-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.skilltree-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.skilltree-list, .subskill-list, .subsubskill-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skill-item, .subskill-item, .subsubskill-item {
+  margin-bottom: 10px;
+}
+
+.skill-header, .subskill-header, .subsubskill-header {
+  display: flex;
+  align-items: center;
+}
+
+.skill-name, .subskill-name, .subsubskill-name {
+  margin-left: 10px;
+}
+
+.skill-checkbox, .subskill-checkbox, .subsubskill-checkbox {
+  margin-right: 10px;
 }

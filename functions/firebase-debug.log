@@ -1,0 +1,438 @@
+[debug] [2025-03-11T10:35:58.408Z] ----------------------------------------------------------------------
+[debug] [2025-03-11T10:35:58.411Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Shiro\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-03-11T10:35:58.411Z] CLI Version:   13.31.2
+[debug] [2025-03-11T10:35:58.411Z] Platform:      win32
+[debug] [2025-03-11T10:35:58.411Z] Node Version:  v22.14.0
+[debug] [2025-03-11T10:35:58.412Z] Time:          Tue Mar 11 2025 18:35:58 GMT+0800 (Singapore Standard Time)
+[debug] [2025-03-11T10:35:58.412Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-11T10:35:58.616Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-11T10:35:58.616Z] > authorizing via signed-in user (gregoriopauljoshua.a@gmail.com)
+[info] i  emulators: Starting emulators: functions, hosting, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, hosting, extensions"}}
+[debug] [2025-03-11T10:35:58.619Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:35:58.620Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:35:58.620Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84 [none]
+[debug] [2025-03-11T10:35:59.558Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84 200
+[debug] [2025-03-11T10:35:59.559Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84 {"projectNumber":"655049358972","projectId":"codecraft-29e84","lifecycleState":"ACTIVE","name":"Codecraft","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-02-23T10:16:06.282705Z"}
+[debug] [2025-03-11T10:35:59.569Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-11T10:35:59.569Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-11T10:35:59.569Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-03-11T10:35:59.574Z] [hub] writing locator at C:\Users\Shiro\AppData\Local\Temp\hub-codecraft-29e84.json
+[debug] [2025-03-11T10:35:59.583Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-03-11T10:35:59.588Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-11T10:35:59.589Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-11T10:35:59.589Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-11T10:35:59.589Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-03-11T10:35:59.594Z] defaultcredentials: writing to file C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json
+[debug] [2025-03-11T10:35:59.597Z] Setting GAC to C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Shiro\\AppData\\Roaming\\firebase\\gregoriopauljoshua_a_gmail.com_application_default_credentials.json"}}
+[debug] [2025-03-11T10:35:59.597Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:35:59.597Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:35:59.598Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/adminSdkConfig [none]
+[debug] [2025-03-11T10:35:59.939Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/adminSdkConfig 200
+[debug] [2025-03-11T10:35:59.939Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/adminSdkConfig {"projectId":"codecraft-29e84","storageBucket":"codecraft-29e84.firebasestorage.app"}
+[debug] [2025-03-11T10:35:59.952Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:35:59.952Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:35:59.952Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/codecraft-29e84/sites 
+[debug] [2025-03-11T10:36:00.556Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/codecraft-29e84/sites 200
+[debug] [2025-03-11T10:36:00.556Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/codecraft-29e84/sites {"sites":[{"name":"projects/codecraft-29e84/sites/codecraft-29e84","defaultUrl":"https://codecraft-29e84.web.app","appId":"1:655049358972:web:d0731b4acd1aca424a13f9","type":"DEFAULT_SITE"}]}
+[debug] [2025-03-11T10:36:00.557Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:00.557Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:00.557Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/webApps/1:655049358972:web:d0731b4acd1aca424a13f9/config [none]
+[debug] [2025-03-11T10:36:01.316Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/webApps/1:655049358972:web:d0731b4acd1aca424a13f9/config 200
+[debug] [2025-03-11T10:36:01.316Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/webApps/1:655049358972:web:d0731b4acd1aca424a13f9/config {"projectId":"codecraft-29e84","appId":"1:655049358972:web:d0731b4acd1aca424a13f9","storageBucket":"codecraft-29e84.firebasestorage.app","apiKey":"AIzaSyAC9zxvPZxVjAUjMSA753ckyhF5ONjKKhs","authDomain":"codecraft-29e84.firebaseapp.com","messagingSenderId":"655049358972","measurementId":"G-STKW1CVXJZ"}
+[debug] [2025-03-11T10:36:01.319Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:01.319Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:01.320Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84 [none]
+[debug] [2025-03-11T10:36:01.572Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84 200
+[debug] [2025-03-11T10:36:01.573Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84 {"projectId":"codecraft-29e84","projectNumber":"655049358972","displayName":"Codecraft","name":"projects/codecraft-29e84","resources":{"hostingSite":"codecraft-29e84"},"state":"ACTIVE","etag":"1_f0aee4d1-d8ef-4e4b-aa45-fe09ae637a40"}
+[info] i  hosting[codecraft-29e84]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] +  hosting[codecraft-29e84]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2025-03-11T10:36:01.596Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\Users\Shiro\Downloads\CodeCraft\frontend\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\" for Cloud Functions..."}}
+[debug] [2025-03-11T10:36:01.604Z] Validating nodejs source
+[debug] [2025-03-11T10:36:02.584Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-03-11T10:36:02.585Z] Building nodejs source
+[debug] [2025-03-11T10:36:02.585Z] Failed to find version of module node: reached end of search path C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[debug] [2025-03-11T10:36:02.587Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-03-11T10:36:02.594Z] Found firebase-functions binary at 'C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8984
+
+[debug] [2025-03-11T10:36:03.891Z] Got response from /__/functions.yaml {"endpoints":{"insertDailyChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"every day 00:00","retryConfig":{"retryCount":null,"maxDoublings":null,"maxRetrySeconds":null,"minBackoffSeconds":null,"maxBackoffSeconds":null},"timeZone":null},"entryPoint":"insertDailyChallenge"},"testFetchChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"testFetchChallenge"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[debug] [2025-03-11T10:36:07.921Z] defaultcredentials: writing to file C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json
+[debug] [2025-03-11T10:36:07.922Z] Setting GAC to C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Shiro\\AppData\\Roaming\\firebase\\gregoriopauljoshua_a_gmail.com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: insertDailyChallenge, testFetchChallenge. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: insertDailyChallenge, testFetchChallenge."}}
+[info] i  functions[us-central1-insertDailyChallenge]: function ignored because the pubsub emulator does not exist or is not running. {"metadata":{"emulator":{"name":"functions"},"message":"function ignored because the pubsub emulator does not exist or is not running."}}
+[info] +  functions[us-central1-testFetchChallenge]: http function initialized (http://127.0.0.1:5001/codecraft-29e84/us-central1/testFetchChallenge). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/codecraft-29e84/us-central1/testFetchChallenge)."}}
+[debug] [2025-03-11T10:36:07.930Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Hosting    │ 127.0.0.1:5000 │ n/a                              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-03-11T10:36:25.302Z] ----------------------------------------------------------------------
+[debug] [2025-03-11T10:36:25.305Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Shiro\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js functions:shell
+[debug] [2025-03-11T10:36:25.305Z] CLI Version:   13.31.2
+[debug] [2025-03-11T10:36:25.305Z] Platform:      win32
+[debug] [2025-03-11T10:36:25.305Z] Node Version:  v22.14.0
+[debug] [2025-03-11T10:36:25.306Z] Time:          Tue Mar 11 2025 18:36:25 GMT+0800 (Singapore Standard Time)
+[debug] [2025-03-11T10:36:25.306Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-11T10:36:25.476Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-11T10:36:25.481Z] > authorizing via signed-in user (gregoriopauljoshua.a@gmail.com)
+[debug] [2025-03-11T10:36:25.481Z] [iam] checking project codecraft-29e84 for permissions ["firebase.projects.get"]
+[debug] [2025-03-11T10:36:25.482Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:25.482Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:25.483Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84:testIamPermissions [none]
+[debug] [2025-03-11T10:36:25.483Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84:testIamPermissions x-goog-quota-user=projects/codecraft-29e84
+[debug] [2025-03-11T10:36:25.483Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-03-11T10:36:26.401Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84:testIamPermissions 200
+[debug] [2025-03-11T10:36:26.401Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codecraft-29e84:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-03-11T10:36:26.402Z] >>> [apiv2][query] GET http://127.0.0.1:4400/emulators [none]
+[debug] [2025-03-11T10:36:26.409Z] <<< [apiv2][status] GET http://127.0.0.1:4400/emulators 200
+[debug] [2025-03-11T10:36:26.409Z] <<< [apiv2][body] GET http://127.0.0.1:4400/emulators {"hub":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"name":"hub","host":"127.0.0.1","port":4400},"ui":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"name":"ui","host":"127.0.0.1","port":4000},"logging":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"name":"logging","host":"127.0.0.1","port":4500},"extensions":{"name":"extensions","host":"127.0.0.1","port":5001},"functions":{"name":"functions","host":"127.0.0.1","port":5001},"hosting":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"name":"hosting","host":"127.0.0.1","port":5000},"eventarc":{"name":"eventarc","host":"127.0.0.1","port":9299},"tasks":{"name":"tasks","host":"127.0.0.1","port":9499}}
+[debug] [2025-03-11T10:36:26.409Z] Running emulators:  {"hub":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"name":"hub","host":"127.0.0.1","port":4400},"ui":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"name":"ui","host":"127.0.0.1","port":4000},"logging":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"name":"logging","host":"127.0.0.1","port":4500},"extensions":{"name":"extensions","host":"127.0.0.1","port":5001},"functions":{"name":"functions","host":"127.0.0.1","port":5001},"hosting":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"name":"hosting","host":"127.0.0.1","port":5000},"eventarc":{"name":"eventarc","host":"127.0.0.1","port":9299},"tasks":{"name":"tasks","host":"127.0.0.1","port":9499}}
+[warn] !  functions: You are already running the Cloud Functions emulator on port 5001. Running the emulator and the Functions shell simultaenously can result in unexpected behavior. 
+[warn] !  functions: Functions Emulator unable to start on port 5000, starting on 5002 instead. {"metadata":{"emulator":{"name":"functions"},"message":"Functions Emulator unable to start on port 5000, starting on 5002 instead."}}
+[debug] [2025-03-11T10:36:26.416Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-11T10:36:26.418Z] defaultcredentials: writing to file C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json
+[debug] [2025-03-11T10:36:26.419Z] DEBUG: Setting GAC to C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json
+[debug] [2025-03-11T10:36:26.419Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:26.419Z] Checked if tokens are valid: true, expires at: 1741692915086
+[debug] [2025-03-11T10:36:26.419Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/adminSdkConfig [none]
+[debug] [2025-03-11T10:36:26.696Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/adminSdkConfig 200
+[debug] [2025-03-11T10:36:26.696Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codecraft-29e84/adminSdkConfig {"projectId":"codecraft-29e84","storageBucket":"codecraft-29e84.firebasestorage.app"}
+[debug] [2025-03-11T10:36:26.704Z] [functions] Watching "C:\Users\Shiro\Downloads\CodeCraft\frontend\functions" for Cloud Functions...
+[debug] [2025-03-11T10:36:26.707Z] Validating nodejs source
+[debug] [2025-03-11T10:36:27.582Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-03-11T10:36:27.582Z] Building nodejs source
+[debug] [2025-03-11T10:36:27.583Z] Failed to find version of module node: reached end of search path C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[debug] [2025-03-11T10:36:27.585Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-03-11T10:36:27.593Z] Found firebase-functions binary at 'C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8639
+
+[debug] [2025-03-11T10:36:28.138Z] Got response from /__/functions.yaml {"endpoints":{"insertDailyChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"every day 00:00","retryConfig":{"retryCount":null,"maxDoublings":null,"maxRetrySeconds":null,"minBackoffSeconds":null,"maxBackoffSeconds":null},"timeZone":null},"entryPoint":"insertDailyChallenge"},"testFetchChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"testFetchChallenge"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[debug] [2025-03-11T10:36:32.167Z] [functions] Loaded functions definitions from source: insertDailyChallenge, testFetchChallenge.
+[debug] [2025-03-11T10:36:32.168Z] [functions[us-central1-insertDailyChallenge]] function ignored because the pubsub emulator does not exist or is not running.
+[debug] [2025-03-11T10:36:32.168Z] [functions[us-central1-testFetchChallenge]] http function initialized (http://127.0.0.1:5002/codecraft-29e84/us-central1/testFetchChallenge).
+[info] i  functions: Loaded functions: insertDailyChallenge, testFetchChallenge 
+[info] i  functions: Connected to running eventarc emulator at 127.0.0.1:9299, calls to this service will affect the emulator 
+[info] i  functions: Connected to running tasks emulator at 127.0.0.1:9499, calls to this service will affect the emulator 
+[warn] !  functions: The following emulators are not running, calls to these services will affect production: firestore, database, pubsub, storage 
+[debug] [2025-03-11T10:37:29.200Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:37:29.201Z] shell:insertDailyChallenge: opts={}, data={}
+[debug] [2025-03-11T10:37:29.211Z] DEBUG: [worker-pool] addWorker(us-central1-insertDailyChallenge)
+[debug] [2025-03-11T10:37:29.211Z] DEBUG: [worker-pool] Adding worker with key us-central1-insertDailyChallenge, total=1
+[debug] [2025-03-11T10:37:30.341Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:37:30.341Z] shell:insertDailyChallenge: opts={}, data={}
+[debug] [2025-03-11T10:37:30.347Z] DEBUG: [worker-pool] addWorker(us-central1-insertDailyChallenge)
+[debug] [2025-03-11T10:37:30.347Z] DEBUG: [worker-pool] Adding worker with key us-central1-insertDailyChallenge, total=2
+[debug] [2025-03-11T10:37:30.512Z] DEBUG: [runtime-status] [32036] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2025-03-11T10:37:30.512Z] DEBUG: [runtime-status] [32036] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:30.513Z] DEBUG: [runtime-status] [32036] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}]
+[debug] [2025-03-11T10:37:30.514Z] DEBUG: [runtime-status] [32036] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:30.675Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:37:30.675Z] shell:insertDailyChallenge: opts={}, data={}
+[debug] [2025-03-11T10:37:30.681Z] DEBUG: [worker-pool] addWorker(us-central1-insertDailyChallenge)
+[debug] [2025-03-11T10:37:30.682Z] DEBUG: [worker-pool] Adding worker with key us-central1-insertDailyChallenge, total=3
+[debug] [2025-03-11T10:37:30.919Z] DEBUG: [runtime-status] [32036] Checked functions.config() {"config":{}}
+[debug] [2025-03-11T10:37:30.920Z] DEBUG: [runtime-status] [32036] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}}
+[debug] [2025-03-11T10:37:30.920Z] DEBUG: [runtime-status] [32036] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:30.926Z] DEBUG: [runtime-status] [32036] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2025-03-11T10:37:30.929Z] DEBUG: [runtime-status] [32036] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:30.930Z] DEBUG: [runtime-status] [32036] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2025-03-11T10:37:30.933Z] DEBUG: [runtime-status] [32036] initializeApp(DEFAULT) {"storageBucket":"codecraft-29e84.firebasestorage.app","projectId":"codecraft-29e84"}
+[debug] [2025-03-11T10:37:30.940Z] DEBUG: [runtime-status] [32036] Functions runtime initialized. {"cwd":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions","node_version":"22.14.0"}
+[debug] [2025-03-11T10:37:30.940Z] DEBUG: [runtime-status] [32036] Listening to port: \\?\pipe\fire_emu_53a91bf545aac0d2
+[debug] [2025-03-11T10:37:30.956Z] DEBUG: [worker-us-central1-insertDailyChallenge-06c2e87d-4633-4021-a6b5-59d23ecff3f5]: IDLE
+[debug] [2025-03-11T10:37:30.969Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:37:30.969Z] shell:insertDailyChallenge: opts={}, data={}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test123', {"user":"  id: 'test123',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test123',"}}
+[info] >    name: 'Reverse a String', {"user":"  name: 'Reverse a String',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Reverse a String',"}}
+[info] >    description: 'Write a function that reverses a given string.', {"user":"  description: 'Write a function that reverses a given string.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that reverses a given string.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test123', {"user":"  id: 'test123',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test123',"}}
+[info] >    name: 'Reverse a String', {"user":"  name: 'Reverse a String',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Reverse a String',"}}
+[info] >    description: 'Write a function that reverses a given string.', {"user":"  description: 'Write a function that reverses a given string.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that reverses a given string.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[warn] !  Google API requested!
+   - URL: "https://oauth2.googleapis.com/token"
+   - Be careful, this may be a production service. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"Google API requested!\n   - URL: \"https://oauth2.googleapis.com/token\"\n   - Be careful, this may be a production service."}}
+[debug] [2025-03-11T10:37:31.883Z] DEBUG: [runtime-status] [28332] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2025-03-11T10:37:31.886Z] DEBUG: [runtime-status] [28332] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:31.886Z] DEBUG: [runtime-status] [28332] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}]
+[debug] [2025-03-11T10:37:31.887Z] DEBUG: [runtime-status] [28332] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:37:32.257Z] DEBUG: [runtime-status] [9692] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2025-03-11T10:37:32.259Z] DEBUG: [runtime-status] [9692] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:32.260Z] DEBUG: [runtime-status] [9692] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}]
+[debug] [2025-03-11T10:37:32.260Z] DEBUG: [runtime-status] [9692] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:32.325Z] DEBUG: [runtime-status] [28332] Checked functions.config() {"config":{}}
+[debug] [2025-03-11T10:37:32.326Z] DEBUG: [runtime-status] [28332] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}}
+[debug] [2025-03-11T10:37:32.326Z] DEBUG: [runtime-status] [28332] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:32.332Z] DEBUG: [runtime-status] [28332] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2025-03-11T10:37:32.335Z] DEBUG: [runtime-status] [28332] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:32.335Z] DEBUG: [runtime-status] [28332] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2025-03-11T10:37:32.337Z] DEBUG: [runtime-status] [28332] initializeApp(DEFAULT) {"storageBucket":"codecraft-29e84.firebasestorage.app","projectId":"codecraft-29e84"}
+[debug] [2025-03-11T10:37:32.345Z] DEBUG: [runtime-status] [28332] Functions runtime initialized. {"cwd":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions","node_version":"22.14.0"}
+[debug] [2025-03-11T10:37:32.345Z] DEBUG: [runtime-status] [28332] Listening to port: \\?\pipe\fire_emu_b6b19107eb8954ce
+[debug] [2025-03-11T10:37:32.426Z] DEBUG: [worker-us-central1-insertDailyChallenge-4c277d6f-246e-4a14-b60d-ffdbff85eede]: IDLE
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test124', {"user":"  id: 'test124',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test124',"}}
+[info] >    name: 'Sum of Array', {"user":"  name: 'Sum of Array',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Sum of Array',"}}
+[info] >    description: 'Write a function that returns the sum of all elements in an array.', {"user":"  description: 'Write a function that returns the sum of all elements in an array.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that returns the sum of all elements in an array.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:37:32.631Z] DEBUG: [runtime-status] [9692] Checked functions.config() {"config":{}}
+[debug] [2025-03-11T10:37:32.631Z] DEBUG: [runtime-status] [9692] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}}
+[debug] [2025-03-11T10:37:32.632Z] DEBUG: [runtime-status] [9692] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:32.636Z] DEBUG: [runtime-status] [9692] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2025-03-11T10:37:32.639Z] DEBUG: [runtime-status] [9692] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}
+[debug] [2025-03-11T10:37:32.639Z] DEBUG: [runtime-status] [9692] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2025-03-11T10:37:32.642Z] DEBUG: [runtime-status] [9692] initializeApp(DEFAULT) {"storageBucket":"codecraft-29e84.firebasestorage.app","projectId":"codecraft-29e84"}
+[debug] [2025-03-11T10:37:32.648Z] DEBUG: [runtime-status] [9692] Functions runtime initialized. {"cwd":"C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions","node_version":"22.14.0"}
+[debug] [2025-03-11T10:37:32.648Z] DEBUG: [runtime-status] [9692] Listening to port: \\?\pipe\fire_emu_e80c5022a2d6a5a3
+[debug] [2025-03-11T10:37:32.752Z] DEBUG: [worker-us-central1-insertDailyChallenge-b9dad269-9f20-4784-a0a8-5fc4f3ea0827]: IDLE
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test125', {"user":"  id: 'test125',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test125',"}}
+[info] >    name: 'Palindrome Checker', {"user":"  name: 'Palindrome Checker',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Palindrome Checker',"}}
+[info] >    description: 'Write a function that checks if a given string is a palindrome.', {"user":"  description: 'Write a function that checks if a given string is a palindrome.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that checks if a given string is a palindrome.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:37:44.481Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:37:44.481Z] shell:insertDailyChallenge: opts={}, data={}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test124', {"user":"  id: 'test124',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test124',"}}
+[info] >    name: 'Sum of Array', {"user":"  name: 'Sum of Array',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Sum of Array',"}}
+[info] >    description: 'Write a function that returns the sum of all elements in an array.', {"user":"  description: 'Write a function that returns the sum of all elements in an array.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that returns the sum of all elements in an array.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:37:52.685Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:37:52.685Z] shell:insertDailyChallenge: opts={}, data={}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test124', {"user":"  id: 'test124',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test124',"}}
+[info] >    name: 'Sum of Array', {"user":"  name: 'Sum of Array',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Sum of Array',"}}
+[info] >    description: 'Write a function that returns the sum of all elements in an array.', {"user":"  description: 'Write a function that returns the sum of all elements in an array.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that returns the sum of all elements in an array.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:38:01.087Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:38:01.087Z] shell:insertDailyChallenge: opts={}, data={}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test124', {"user":"  id: 'test124',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test124',"}}
+[info] >    name: 'Sum of Array', {"user":"  name: 'Sum of Array',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Sum of Array',"}}
+[info] >    description: 'Write a function that returns the sum of all elements in an array.', {"user":"  description: 'Write a function that returns the sum of all elements in an array.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that returns the sum of all elements in an array.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:38:02.636Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:38:02.636Z] shell:insertDailyChallenge: opts={}, data={}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test124', {"user":"  id: 'test124',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test124',"}}
+[info] >    name: 'Sum of Array', {"user":"  name: 'Sum of Array',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Sum of Array',"}}
+[info] >    description: 'Write a function that returns the sum of all elements in an array.', {"user":"  description: 'Write a function that returns the sum of all elements in an array.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that returns the sum of all elements in an array.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:38:03.206Z] shell:insertDailyChallenge: trigger={"entryPoint":"insertDailyChallenge","platform":"gcfv2","region":"us-central1","name":"insertDailyChallenge","id":"us-central1-insertDailyChallenge","codebase":"default","availableMemoryMb":256,"labels":{"EVENTARC_CLOUD_EVENT_SOURCE":"run-emulated.googleapis.com/projects/codecraft-29e84/locations/us-central1/services/insertDailyChallenge"},"timeoutSeconds":60,"secretEnvironmentVariables":[],"eventTrigger":{"eventType":"pubsub","resource":""},"schedule":{"schedule":"every day 00:00","timeZone":null,"retryConfig":{"maxBackoffSeconds":null,"minBackoffSeconds":null,"maxRetrySeconds":null,"retryCount":null,"maxDoublings":null}}}
+[debug] [2025-03-11T10:38:03.206Z] shell:insertDailyChallenge: opts={}, data={}
+[info] >  Running scheduled function... {"user":"Running scheduled function...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Running scheduled function..."}}
+[info] >  Selected challenge: { {"user":"Selected challenge: {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Selected challenge: {"}}
+[info] >    id: 'test123', {"user":"  id: 'test123',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   id: 'test123',"}}
+[info] >    name: 'Reverse a String', {"user":"  name: 'Reverse a String',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   name: 'Reverse a String',"}}
+[info] >    description: 'Write a function that reverses a given string.', {"user":"  description: 'Write a function that reverses a given string.',","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   description: 'Write a function that reverses a given string.',"}}
+[info] >    languages: [ 'Python', 'C', 'JavaScript' ], {"user":"  languages: [ 'Python', 'C', 'JavaScript' ],","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   languages: [ 'Python', 'C', 'JavaScript' ],"}}
+[info] >    createdAt: ServerTimestampTransform {} {"user":"  createdAt: ServerTimestampTransform {}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m   createdAt: ServerTimestampTransform {}"}}
+[info] >  } {"user":"}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m }"}}
+[info] >  Challenge inserted into Firestore ✅ {"user":"Challenge inserted into Firestore ✅","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-insertDailyChallenge"},"extension":{},"message":"\u001b[90m> \u001b[39m Challenge inserted into Firestore ✅"}}
+[debug] [2025-03-11T10:40:37.932Z] DEBUG: File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers
+[debug] [2025-03-11T10:40:37.932Z] File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-03-11T10:40:38.722Z] DEBUG: File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers
+[debug] [2025-03-11T10:40:38.722Z] File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-03-11T10:40:39.258Z] File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-03-11T10:40:39.259Z] DEBUG: File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers
+[debug] [2025-03-11T10:40:39.995Z] DEBUG: File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers
+[debug] [2025-03-11T10:40:39.995Z] File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\index.js changed, reloading triggers"}}
+[debug] [2025-03-11T10:40:41.008Z] Validating nodejs source
+[debug] [2025-03-11T10:40:41.008Z] Validating nodejs source
+[debug] [2025-03-11T10:40:41.994Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-03-11T10:40:41.994Z] Building nodejs source
+[debug] [2025-03-11T10:40:41.994Z] Failed to find version of module node: reached end of search path C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[debug] [2025-03-11T10:40:41.993Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-03-11T10:40:41.994Z] Building nodejs source
+[debug] [2025-03-11T10:40:41.994Z] Failed to find version of module node: reached end of search path C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[debug] [2025-03-11T10:40:41.995Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-03-11T10:40:42.002Z] Found firebase-functions binary at 'C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules\.bin\firebase-functions'
+[debug] [2025-03-11T10:40:41.995Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-03-11T10:40:42.001Z] Found firebase-functions binary at 'C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8799
+
+[info] Serving at port 8383
+
+[debug] [2025-03-11T10:40:42.598Z] Got response from /__/functions.yaml {"endpoints":{"insertDailyChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"every day 00:00","retryConfig":{"retryCount":null,"maxDoublings":null,"maxRetrySeconds":null,"minBackoffSeconds":null,"maxBackoffSeconds":null},"timeZone":null},"entryPoint":"insertDailyChallenge"},"refreshChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"refreshChallenge"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[debug] [2025-03-11T10:40:42.600Z] Got response from /__/functions.yaml {"endpoints":{"insertDailyChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"every day 00:00","retryConfig":{"retryCount":null,"maxDoublings":null,"maxRetrySeconds":null,"minBackoffSeconds":null,"maxBackoffSeconds":null},"timeZone":null},"entryPoint":"insertDailyChallenge"},"refreshChallenge":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"refreshChallenge"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[debug] [2025-03-11T10:40:46.623Z] defaultcredentials: writing to file C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json
+[debug] [2025-03-11T10:40:46.624Z] [functions] Loaded functions definitions from source: insertDailyChallenge, refreshChallenge.
+[debug] [2025-03-11T10:40:46.624Z] Setting GAC to C:\Users\Shiro\AppData\Roaming\firebase\gregoriopauljoshua_a_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Shiro\\AppData\\Roaming\\firebase\\gregoriopauljoshua_a_gmail.com_application_default_credentials.json"}}
+[debug] [2025-03-11T10:40:46.624Z] DEBUG: [worker-pool] Shutting down IDLE worker (us-central1-insertDailyChallenge)
+[debug] [2025-03-11T10:40:46.624Z] DEBUG: [worker-us-central1-insertDailyChallenge-06c2e87d-4633-4021-a6b5-59d23ecff3f5]: FINISHING
+[debug] [2025-03-11T10:40:46.625Z] DEBUG: [worker-pool] Shutting down IDLE worker (us-central1-insertDailyChallenge)
+[debug] [2025-03-11T10:40:46.625Z] DEBUG: [worker-us-central1-insertDailyChallenge-4c277d6f-246e-4a14-b60d-ffdbff85eede]: FINISHING
+[debug] [2025-03-11T10:40:46.625Z] DEBUG: [worker-pool] Shutting down IDLE worker (us-central1-insertDailyChallenge)
+[debug] [2025-03-11T10:40:46.625Z] DEBUG: [worker-us-central1-insertDailyChallenge-b9dad269-9f20-4784-a0a8-5fc4f3ea0827]: FINISHING
+[debug] [2025-03-11T10:40:46.625Z] [functions[us-central1-refreshChallenge]] http function initialized (http://127.0.0.1:5002/codecraft-29e84/us-central1/refreshChallenge).
+[info] +  functions: Loaded functions definitions from source: insertDailyChallenge, refreshChallenge. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: insertDailyChallenge, refreshChallenge."}}
+[info] +  functions[us-central1-refreshChallenge]: http function initialized (http://127.0.0.1:5001/codecraft-29e84/us-central1/refreshChallenge). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/codecraft-29e84/us-central1/refreshChallenge)."}}
+[debug] [2025-03-11T10:40:46.635Z] DEBUG: [worker-us-central1-insertDailyChallenge-06c2e87d-4633-4021-a6b5-59d23ecff3f5]: exited
+[debug] [2025-03-11T10:40:46.635Z] DEBUG: [worker-us-central1-insertDailyChallenge-06c2e87d-4633-4021-a6b5-59d23ecff3f5]: FINISHED
+[debug] [2025-03-11T10:40:46.636Z] DEBUG: [worker-us-central1-insertDailyChallenge-4c277d6f-246e-4a14-b60d-ffdbff85eede]: exited
+[debug] [2025-03-11T10:40:46.636Z] DEBUG: [worker-us-central1-insertDailyChallenge-4c277d6f-246e-4a14-b60d-ffdbff85eede]: FINISHED
+[debug] [2025-03-11T10:40:46.636Z] DEBUG: [worker-us-central1-insertDailyChallenge-b9dad269-9f20-4784-a0a8-5fc4f3ea0827]: exited
+[debug] [2025-03-11T10:40:46.636Z] DEBUG: [worker-us-central1-insertDailyChallenge-b9dad269-9f20-4784-a0a8-5fc4f3ea0827]: FINISHED
+[debug] [2025-03-11T10:53:17.566Z] DEBUG: File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers
+[debug] [2025-03-11T10:53:17.567Z] File C:\Users\Shiro\Downloads\CodeCraft\frontend\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Shiro\\Downloads\\CodeCraft\\frontend\\functions\\index.js changed, reloading triggers"}}

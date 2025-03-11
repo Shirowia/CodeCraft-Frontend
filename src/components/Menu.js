@@ -12,7 +12,6 @@ const Menu = () => {
   const [user, setUser] = useState(null);
   const [challenge, setChallenge] = useState(null);
   const [trendingTopics, setTrendingTopics] = useState([]);
-  const [leaderboard, setLeaderboard] = useState([]);
   const navigate = useNavigate();
   
 
@@ -61,14 +60,6 @@ const Menu = () => {
     fetchTrendingTopics();
   }, []);
 
-  useEffect(() => {
-    const fetchLeaderboard = async () => {
-      const querySnapshot = await getDocs(collection(db, 'leaderboard'));
-      setLeaderboard(querySnapshot.docs.map(doc => doc.data()));
-    };
-    fetchLeaderboard();
-  }, []);
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -88,7 +79,7 @@ const Menu = () => {
         <ul className="nav flex-column flex-grow-1">
           <li className="nav-item"><Link className="nav-link text-white" to="/profile">👤 Profile</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">📅 Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/skill-tree">🌳 Skill Tree</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">🌳 Skill Tree</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" to="/learn">🌳 Learn</Link></li>
         </ul>
 
@@ -127,18 +118,9 @@ const Menu = () => {
               )) : <p>No trending topics</p>}
             </div>
           </div>
-
-          <div className="col-md-4">
-            <div className="card p-3 shadow-sm">
-              <h5>🏆 Leaderboard</h5>
-              {leaderboard.length > 0 ? leaderboard.map((user, index) => (
-                <p key={index}>{user.name}: {user.score} pts</p>
-              )) : <p>No leaderboard data</p>}
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 

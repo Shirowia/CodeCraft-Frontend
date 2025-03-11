@@ -11,6 +11,7 @@ import Settings from './components/Settings';
 import Learn from './components/Learn';
 import SkillTree from './components/Skilltree';
 import DailyChallenge from './components/DailyChallenge';
+import Communities from './components/Communities';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './styles/general.css';
 
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/menu" element={<PrivateRoute user={user}><Menu /></PrivateRoute>} />
             <Route path="/daily-challenge" element={<PrivateRoute user={user}><DailyChallenge /></PrivateRoute>} />
             <Route path="/learn" element={<PrivateRoute user={user}><Learn /></PrivateRoute>} />
+            <Route path="/communities" element={<PrivateRoute user={user}><Communities /></PrivateRoute>} />
             <Route path="/skilltree" element={<PrivateRoute user={user}><SkillTree /></PrivateRoute>} />
             <Route path="/homepage" element={<Home />} />
             <Route path="/profile" element={<PrivateRoute user={user}><Profile /></PrivateRoute>} />

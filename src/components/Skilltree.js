@@ -77,15 +77,17 @@ const SkillTree = () => {
           <h4 className="mt-2">CodeCraft</h4>
         </div>
         <ul className="nav flex-column flex-grow-1">
-          <li className="nav-item"><Link className="nav-link text-white" to="/profile">👤 Profile</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">📅 Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white active" to="/skilltree">🌳 Skill Tree</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/learn">📚 Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/menu">Menu</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/profile">Profile</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">Daily Challenges</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/skilltree">Skill Tree</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/learn">Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/communities">Communities</Link></li>
         </ul>
 
         <ul className="nav flex-column">
-          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100">⚙️ Settings</button></Link></li>
-          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>🚪 Logout</button></li>
+          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100">Settings</button></Link></li>
+          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>Logout</button></li>
         </ul>
       </div>
 
@@ -97,7 +99,7 @@ const SkillTree = () => {
         <hr />
         <ul className="list-group skilltree-list">
           {skills.map((skill, skillIndex) => (
-            <li key={skillIndex} className="list-group-item skill-item">
+            <li key={skillIndex} className="bg-dark list-group-item skill-item">
               <div className="skill-header">
                 <input
                   type="checkbox"
@@ -109,7 +111,7 @@ const SkillTree = () => {
               </div>
               <ul className="list-group subskill-list">
                 {skill.subSkills.map((subSkill, subSkillIndex) => (
-                  <li key={subSkillIndex} className="list-group-item subskill-item">
+                  <li key={subSkillIndex} className="bg-dark list-group-item subskill-item">
                     <div className="subskill-header">
                       <input
                         type="checkbox"
@@ -121,7 +123,7 @@ const SkillTree = () => {
                     </div>
                     <ul className="list-group subsubskill-list">
                       {subSkill.subSkills.map((subSubSkill, subSubSkillIndex) => (
-                        <li key={subSubSkillIndex} className="list-group-item subsubskill-item">
+                        <li key={subSubSkillIndex} className="bg-dark list-group-item subsubskill-item">
                           <div className="subsubskill-header">
                             <input
                               type="checkbox"

@@ -72,15 +72,17 @@ const Profile = () => {
           <h4 className="mt-2">CodeCraft</h4>
         </div>
         <ul className="nav flex-column flex-grow-1">
-          <li className="nav-item"><Link className="nav-link text-white active" to="/profile">👤 Profile</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">📅 Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">🌳 Skill Tree</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/learn">📚 Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/menu">Menu</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/profile">Profile</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">Daily Challenges</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">Skill Tree</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/learn">Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/communities">Communities</Link></li>
         </ul>
 
         <ul className="nav flex-column">
-          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100">⚙️ Settings</button></Link></li>
-          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>🚪 Logout</button></li>
+          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100"> Settings</button></Link></li>
+          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>Logout</button></li>
         </ul>
       </div>
 

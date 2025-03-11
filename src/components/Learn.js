@@ -82,15 +82,17 @@ const Learn = () => {
           <h4 className="mt-2">CodeCraft</h4>
         </div>
         <ul className="nav flex-column flex-grow-1">
-          <li className="nav-item"><Link className="nav-link text-white" to="/profile">👤 Profile</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">📅 Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">🌳 Skill Tree</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white active" to="/learn">📚 Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/menu">Menu</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/profile">Profile</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">Daily Challenges</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">Skill Tree</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/learn">Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/communities">Communities</Link></li>
         </ul>
 
         <ul className="nav flex-column">
-          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100">⚙️ Settings</button></Link></li>
-          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>🚪 Logout</button></li>
+          <li className="nav-item mt-auto"><Link to="/settings"><button className="btn btn-outline-light game-menu-button w-100">Settings</button></Link></li>
+          <li className="nav-item"><button className="btn btn-danger w-100 mt-3 game-menu-button" onClick={handleLogout}>Logout</button></li>
         </ul>
       </div>
 
@@ -118,7 +120,7 @@ const Learn = () => {
           <h2 className="section-title">Coursera Courses on Data Structures and Algorithms</h2>
           <ul className="list-group courses-list">
             {courseraCourses.map((course, index) => (
-              <li key={index} className="list-group-item course-item">
+              <li key={index} className="bg-dark text-white list-group-item course-item">
                 <a href={`https://www.coursera.org/learn/${course.slug}`} target="_blank" rel="noopener noreferrer" className="course-link">
                   {course.name}
                 </a>

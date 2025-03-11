@@ -5,15 +5,11 @@ import { collection, getDocs } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import '../styles/general.css';
-import {  query, where } from 'firebase/firestore';
-import { Timestamp } from 'firebase/firestore';
 
 const Menu = () => {
   const [user, setUser] = useState(null);
   const [challenge, setChallenge] = useState(null);
-  const [trendingTopics, setTrendingTopics] = useState([]);
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -26,38 +22,26 @@ const Menu = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  useEffect(() => {
-    const fetchChallenge = async () => {
-      try {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const timestampToday = Timestamp.fromDate(today);
-  
-        const q = query(collection(db, 'challenges'), where('createdAt', '>=', timestampToday));
-        const querySnapshot = await getDocs(q);
-  
-        if (!querySnapshot.empty) {
-          const challengeData = querySnapshot.docs[0].data();
-          setChallenge(challengeData);
-        } else {
-          console.log('No challenge found for today.');
-        }
-      } catch (error) {
-        console.error('Error fetching challenge:', error);
+  const fetchChallenges = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'challenges'));
+      const challenges = querySnapshot.docs.map(doc => doc.data());
+
+      if (challenges.length > 0) {
+        const randomIndex = Math.floor(Math.random() * challenges.length);
+        const selectedChallenge = challenges[randomIndex];
+        setChallenge(selectedChallenge);
+      } else {
+        console.log('No challenges found.');
+        setChallenge(null);
       }
-    };
-  
-    fetchChallenge();
-  }, []);
-  
-  
+    } catch (error) {
+      console.error('Error fetching challenges:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchTrendingTopics = async () => {
-      const querySnapshot = await getDocs(collection(db, 'trendingTopics'));
-      setTrendingTopics(querySnapshot.docs.map(doc => doc.data()));
-    };
-    fetchTrendingTopics();
+    fetchChallenges();
   }, []);
 
   const handleLogout = async () => {
@@ -77,10 +61,12 @@ const Menu = () => {
           <h4 className="mt-2">CodeCraft</h4>
         </div>
         <ul className="nav flex-column flex-grow-1">
-          <li className="nav-item"><Link className="nav-link text-white" to="/profile">👤 Profile</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">📅 Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">🌳 Skill Tree</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/learn">🌳 Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/menu">Menu</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/profile">Profile</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">Daily Challenges</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/skilltree">Skill Tree</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/learn">Learn</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white active" to="/communities">Communities</Link></li>
         </ul>
 
         <ul className="nav flex-column">
@@ -93,29 +79,18 @@ const Menu = () => {
         <h2>Welcome, {user ? user.displayName || 'User' : 'Guest'}!</h2>
         <hr />
         <div className="row">
-                <div className="col-md-4">
-            <div className="card p-3 shadow-sm">
-              <h5>📅 Daily Challenges</h5>
+          <div className="col-md-4">
+            <div className="text-white card p-3 shadow-sm">
+              <h5>Daily Challenges</h5>
               {challenge ? (
                 <>
                   <p><strong>{challenge.name}</strong></p>
                   <p>{challenge.description}</p>
-                  <p><small>📅 {challenge.createdAt.toDate().toISOString().split('T')[0]}</small></p>
+                  <p><small>{challenge.createdAt.toDate().toISOString().split('T')[0]}</small></p>
                 </>
               ) : (
                 <p>No challenge available today.</p>
               )}
-            </div>
-          </div>
-
-
-
-          <div className="col-md-4">
-            <div className="card p-3 shadow-sm">
-              <h5>🔥 Trending Topics</h5>
-              {trendingTopics.length > 0 ? trendingTopics.map((topic, index) => (
-                <p key={index}>{topic.name}</p>
-              )) : <p>No trending topics</p>}
             </div>
           </div>
             </div>

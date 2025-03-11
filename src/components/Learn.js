@@ -4,7 +4,23 @@ import { db } from '../firebase/firebase';
 
 const Learn = () => {
   const [learningResources, setLearningResources] = useState([]);
-  const [courseraCourses, setCourseraCourses] = useState([]);
+  const [courseraCourses, setCourseraCourses] = useState([
+    {
+      name: "Data Structures and Algorithms Specialization",
+      description: "Learn to design, implement, and analyze algorithms for solving computational problems.",
+      slug: "data-structures-algorithms"
+    },
+    {
+      name: "Algorithms, Part I",
+      description: "This course covers essential information about algorithms and data structures.",
+      slug: "algorithms-part1"
+    },
+    {
+      name: "Algorithmic Toolbox",
+      description: "Learn basic algorithmic techniques and ideas for computational problems.",
+      slug: "algorithmic-toolbox"
+    }
+  ]);
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -13,22 +29,7 @@ const Learn = () => {
       setLearningResources(resourcesSnapshot.docs.map(doc => doc.data()));
     };
 
-    const fetchCourseraCourses = async () => {
-      try {
-        const response = await fetch('https://codecraft-29e84.cloudfunctions.net/fetchCourseraCourses');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('Coursera API response:', data);
-        setCourseraCourses(data.elements);
-      } catch (error) {
-        console.error('Failed to fetch Coursera courses:', error);
-      }
-    };
-
     fetchResources();
-    fetchCourseraCourses();
   }, []);
 
   return (

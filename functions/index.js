@@ -41,6 +41,7 @@ exports.fetchCourseraCourses = functions.https.onRequest((req, res) => {
   cors(req, res, async () => {
     try {
       const response = await axios.get('https://api.coursera.org/api/courses.v1?q=search&query=data%20structures%20and%20algorithms&fields=name,description,primaryLanguages,photoUrl');
+      res.set('Access-Control-Allow-Origin', '*');
       res.json(response.data);
     } catch (error) {
       console.error('Error fetching Coursera courses:', error);

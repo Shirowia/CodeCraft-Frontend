@@ -14,6 +14,7 @@ import DailyChallenge from './components/DailyChallenge';
 import Communities from './components/Communities';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './styles/general.css';
+import { DailyChallengeProvider } from './DailyChallengeContext'; // Import the provider
 
 // Private Route Component
 const PrivateRoute = ({ user, children }) => {
@@ -46,27 +47,29 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <div className="container mt-4">
-        {/* Main Content */}
-        <div className="mt-4 p-4 rounded shadow-sm">
-          <Routes>
-            <Route path="/menu" element={<PrivateRoute user={user}><Menu /></PrivateRoute>} />
-            <Route path="/daily-challenge" element={<PrivateRoute user={user}><DailyChallenge /></PrivateRoute>} />
-            <Route path="/learn" element={<PrivateRoute user={user}><Learn /></PrivateRoute>} />
-            <Route path="/communities" element={<PrivateRoute user={user}><Communities /></PrivateRoute>} />
-            <Route path="/skilltree" element={<PrivateRoute user={user}><SkillTree /></PrivateRoute>} />
-            <Route path="/homepage" element={<Home />} />
-            <Route path="/profile" element={<PrivateRoute user={user}><Profile /></PrivateRoute>} />
-            <Route path="/settings" element={<PrivateRoute user={user}><Settings /></PrivateRoute>} />
-            <Route path="/forgot-password" element={!user ? <ForgotPassword /> : <Navigate to="/menu" />} />
-            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/menu" />} />
-            <Route path="/login" element={!user ? <Login /> : <Navigate to="/menu" />} />
-            <Route path="/" element={<Navigate to="/homepage" />} />
-          </Routes>
+    <DailyChallengeProvider>
+      <Router>
+        <div className="container mt-4">
+          {/* Main Content */}
+          <div className="mt-4 p-4 rounded shadow-sm">
+            <Routes>
+              <Route path="/menu" element={<PrivateRoute user={user}><Menu /></PrivateRoute>} />
+              <Route path="/daily-challenge" element={<PrivateRoute user={user}><DailyChallenge /></PrivateRoute>} />
+              <Route path="/learn" element={<PrivateRoute user={user}><Learn /></PrivateRoute>} />
+              <Route path="/communities" element={<PrivateRoute user={user}><Communities /></PrivateRoute>} />
+              <Route path="/skilltree" element={<PrivateRoute user={user}><SkillTree /></PrivateRoute>} />
+              <Route path="/homepage" element={<Home />} />
+              <Route path="/profile" element={<PrivateRoute user={user}><Profile /></PrivateRoute>} />
+              <Route path="/settings" element={<PrivateRoute user={user}><Settings /></PrivateRoute>} />
+              <Route path="/forgot-password" element={!user ? <ForgotPassword /> : <Navigate to="/menu" />} />
+              <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/menu" />} />
+              <Route path="/login" element={!user ? <Login /> : <Navigate to="/menu" />} />
+              <Route path="/" element={<Navigate to="/homepage" />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </DailyChallengeProvider>
   );
 };
 

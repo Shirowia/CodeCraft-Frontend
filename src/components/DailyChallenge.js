@@ -1,41 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { auth, db } from '../firebase/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import React, { useContext, useState } from 'react';
+import { auth } from '../firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import logo from '../assets/logo.png';
 import '../styles/general.css';
+import { DailyChallengeContext } from '../DailyChallengeContext'; // Import the context
 
 const DailyChallenge = () => {
-  const [challenge, setChallenge] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { challenge, loading, fetchChallenges } = useContext(DailyChallengeContext); // Use the context
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
-
-  const fetchChallenges = async () => {
-    setLoading(true);
-    try {
-      const querySnapshot = await getDocs(collection(db, 'challenges'));
-      const challenges = querySnapshot.docs.map(doc => doc.data());
-
-      if (challenges.length > 0) {
-        const randomIndex = Math.floor(Math.random() * challenges.length);
-        const selectedChallenge = challenges[randomIndex];
-        setChallenge(selectedChallenge);
-      } else {
-        console.log('No challenges found.');
-        setChallenge(null);
-      }
-    } catch (error) {
-      console.error('Error fetching challenges:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchChallenges();
-  }, []);
 
   const handleLogout = async () => {
     try {

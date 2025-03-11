@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { auth, db } from '../firebase/firebase';
+import React, { useContext, useEffect, useState } from 'react';
+import { auth } from '../firebase/firebase';
 import { signOut } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import '../styles/general.css';
+import { DailyChallengeContext } from '../DailyChallengeContext'; // Import the context
 
 const Menu = () => {
   const [user, setUser] = useState(null);
-  const [challenge, setChallenge] = useState(null);
   const navigate = useNavigate();
+  const { challenge, loading } = useContext(DailyChallengeContext); // Use the context
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -21,28 +21,6 @@ const Menu = () => {
     });
     return () => unsubscribe();
   }, [navigate]);
-
-  const fetchChallenges = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, 'challenges'));
-      const challenges = querySnapshot.docs.map(doc => doc.data());
-
-      if (challenges.length > 0) {
-        const randomIndex = Math.floor(Math.random() * challenges.length);
-        const selectedChallenge = challenges[randomIndex];
-        setChallenge(selectedChallenge);
-      } else {
-        console.log('No challenges found.');
-        setChallenge(null);
-      }
-    } catch (error) {
-      console.error('Error fetching challenges:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchChallenges();
-  }, []);
 
   const handleLogout = async () => {
     try {
@@ -82,20 +60,22 @@ const Menu = () => {
           <div className="col-md-4">
             <div className="text-white card p-3 shadow-sm">
               <h5>Daily Challenges</h5>
-              {challenge ? (
+              {loading ? (
+                <p>Loading challenge...</p>
+              ) : !challenge ? (
+                <p>No challenge available today.</p>
+              ) : (
                 <>
                   <p><strong>{challenge.name}</strong></p>
                   <p>{challenge.description}</p>
                   <p><small>{challenge.createdAt.toDate().toISOString().split('T')[0]}</small></p>
                 </>
-              ) : (
-                <p>No challenge available today.</p>
               )}
             </div>
           </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
   );
 };
 

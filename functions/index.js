@@ -1,13 +1,23 @@
-const { onSchedule } = require("firebase-functions/v2/scheduler");
-const { getFirestore, FieldValue } = require("firebase-admin/firestore");
+/**
+ * Import function triggers from their respective submodules:
+ *
+ * const {onCall} = require("firebase-functions/v2/https");
+ * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
+ *
+ * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ */
+
+const {onSchedule} = require("firebase-functions/v2/scheduler");
+const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 const admin = require("firebase-admin");
-const functions = require('firebase-functions');
-const axios = require('axios');
-const cors = require('cors')({ origin: true });
 
 admin.initializeApp();
 const db = getFirestore();
 
+/**
+*Fetches a dummy challenge and inserts it into Firestore.
+*@return {Promise<Object|null>} The challenge object or null if an error occurs.
+*/
 async function fetchChallenge() {
   try {
     const challenge = {
@@ -31,21 +41,12 @@ async function fetchChallenge() {
   }
 }
 
+/**
+ * Inserts a daily challenge into Firestore.
+ * @param {Object} event - The event object.
+ * @return {Promise<void>}
+ */
 exports.insertDailyChallenge = onSchedule("every day 00:00", async (event) => {
   console.log("Running scheduled function...");
   await fetchChallenge();
-});
-
-// New function to fetch Coursera courses
-exports.fetchCourseraCourses = functions.https.onRequest((req, res) => {
-  cors(req, res, async () => {
-    try {
-      const response = await axios.get('https://api.coursera.org/api/courses.v1?q=search&query=data%20structures%20and%20algorithms&fields=name,description,primaryLanguages,photoUrl');
-      res.set('Access-Control-Allow-Origin', '*'); // Add this line
-      res.json(response.data);
-    } catch (error) {
-      console.error('Error fetching Coursera courses:', error);
-      res.status(500).send('Failed to fetch Coursera courses');
-    }
-  });
 });

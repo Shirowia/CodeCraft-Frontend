@@ -88,9 +88,8 @@ const Menu = () => {
         <ul className="nav flex-column flex-grow-1">
           <li className="nav-item"><Link className="nav-link text-white" to="/profile">👤 Profile</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" to="/daily-challenge">📅 Daily Challenges</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/trending">🔥 Trending Topics</Link></li>
-          <li className="nav-item"><Link className="nav-link text-white" to="/leaderboard">🏆 Leaderboard</Link></li>
           <li className="nav-item"><Link className="nav-link text-white" to="/skill-tree">🌳 Skill Tree</Link></li>
+          <li className="nav-item"><Link className="nav-link text-white" to="/learn">🌳 Learn</Link></li>
         </ul>
 
         <ul className="nav flex-column">

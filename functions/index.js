@@ -1,6 +1,8 @@
-const {onSchedule} = require("firebase-functions/v2/scheduler");
-const {getFirestore, FieldValue} = require("firebase-admin/firestore");
+const { onSchedule } = require("firebase-functions/v2/scheduler");
+const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 const admin = require("firebase-admin");
+const functions = require('firebase-functions');
+const axios = require('axios');
 
 admin.initializeApp();
 const db = getFirestore();
@@ -31,4 +33,15 @@ async function fetchChallenge() {
 exports.insertDailyChallenge = onSchedule("every day 00:00", async (event) => {
   console.log("Running scheduled function...");
   await fetchChallenge();
+});
+
+// New function to fetch Coursera courses
+exports.fetchCourseraCourses = functions.https.onRequest(async (req, res) => {
+  try {
+    const response = await axios.get('https://api.coursera.org/api/courses.v1?q=search&query=data%20structures%20and%20algorithms&fields=name,description,primaryLanguages,photoUrl');
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching Coursera courses:', error);
+    res.status(500).send('Failed to fetch Coursera courses');
+  }
 });

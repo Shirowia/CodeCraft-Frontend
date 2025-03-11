@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import logo from '../assets/logo.png';
-import '../styles/general.css'; // Import the general CSS file for styling
+import '../styles/general.css';
 
 const SkillTree = () => {
   const navigate = useNavigate();

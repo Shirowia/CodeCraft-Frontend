@@ -15,7 +15,7 @@ const Learn = () => {
 
     const fetchCourseraCourses = async () => {
       try {
-        const response = await fetch('https://<YOUR_FIREBASE_PROJECT_ID>.cloudfunctions.net/fetchCourseraCourses');
+        const response = await fetch('https://codecraft-29e84.cloudfunctions.net/fetchCourseraCourses');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

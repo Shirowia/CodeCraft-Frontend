@@ -1,13 +1,20 @@
-const { getFirestore, writeBatch, doc } = require("firebase-admin/firestore");
+const { getFirestore } = require("firebase-admin/firestore");
 const admin = require("firebase-admin");
 const serviceAccount = require("../scripts/codecraft-29e84-firebase-adminsdk-fbsvc-a95cfa73c9.json");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://codecraft-29e84.firebaseio.com"
-});
-
-const db = getFirestore();
+// Check if Firebase app is already initialized to avoid multiple initializations
+let db;
+try {
+  db = getFirestore(admin.app());
+} catch (error) {
+  // If not initialized, initialize with service account
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://codecraft-29e84.firebaseio.com"
+  });
+  
+  db = getFirestore();
+}
 
 const coursesData = [
   {
@@ -44,24 +51,22 @@ const coursesData = [
     description: "Learn about elementary data structures, sorting, and searching algorithms.",
     overview: "This course covers the essential information about algorithms and data structures, with emphasis on applications and scientific performance analysis of Java implementations. Part I covers elementary data structures, sorting, and searching algorithms.",
     benefits: [
-      "Taught by Princeton University professors",
+      "Clear explanations of complex concepts",
       "Practical implementations in Java",
-      "Strong foundation in algorithm performance analysis",
-      "High-quality assignments and programming challenges"
+      "High-quality assignments and exercises",
+      "Taught by Princeton University professors"
     ],
     drawbacks: [
-      "Requires Java programming knowledge",
-      "More theoretical than some other courses",
-      "Rigorous mathematical approach may be challenging"
+      "Focus on Java programming specifically",
+      "Requires basic programming knowledge",
+      "Some concepts require mathematical background"
     ],
     topics: [
-      "Union-find algorithms",
+      "Union-find",
       "Analysis of algorithms",
       "Stacks and queues",
-      "Elementary sorts",
-      "Mergesort and Quicksort",
-      "Priority queues",
-      "Elementary symbol tables"
+      "Sorting algorithms",
+      "Binary search trees"
     ],
     url: "https://www.coursera.org/learn/algorithms-part1",
     provider: "Coursera",
@@ -158,10 +163,11 @@ async function initializeCourses() {
   try {
     console.log('Starting to initialize courses data...');
     
-    const batch = writeBatch(db);
+    // In Firebase Admin SDK, we use regular batch operations
+    const batch = db.batch();
     
     coursesData.forEach((course) => {
-      const courseRef = doc(db, 'courses', course.id);
+      const courseRef = db.collection('courses').doc(course.id);
       batch.set(courseRef, course);
     });
     
@@ -182,7 +188,7 @@ async function initializeLearningResources() {
   try {
     console.log('Initializing learning resources...');
     
-    const batch = writeBatch(db);
+    const batch = db.batch();
     
     const resources = [
       {
@@ -203,7 +209,7 @@ async function initializeLearningResources() {
     ];
     
     resources.forEach((resource, index) => {
-      const resourceRef = doc(db, 'learningResources', `resource-${index + 1}`);
+      const resourceRef = db.collection('learningResources').doc(`resource-${index + 1}`);
       batch.set(resourceRef, resource);
     });
     

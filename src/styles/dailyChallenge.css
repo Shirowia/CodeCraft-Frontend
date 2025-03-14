@@ -268,6 +268,25 @@
   height: auto;
 }
 
+/* Add styles for the modal */
+.challenge-history-modal .modal-content {
+  background-color: #212529;
+  color: white;
+}
+
+.challenge-history-modal .modal-header {
+  border-bottom: 1px solid #32383e;
+}
+
+.challenge-history-modal .modal-footer {
+  border-top: 1px solid #32383e;
+}
+
+.challenge-history-modal .btn-close {
+  color: white;
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .d-flex.justify-content-between.align-items-center.mb-4 {

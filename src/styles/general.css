@@ -6,7 +6,8 @@ body, html {
 
 /* Base styling */
 body {
-    background-color: #121212;
+    /*background-color: #121212;*/
+    background-image: url('src\assets\mainBG.png');
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;

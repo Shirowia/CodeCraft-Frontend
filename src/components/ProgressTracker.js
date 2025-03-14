@@ -125,14 +125,16 @@ const ProgressTracker = () => {
     <div className="progress-tracker">
       <div className="progress-overview">
         <div className="main-progress">
-          <h5>Overall Progress</h5>
-          <CircularProgress percentage={overallProgress} size={100} strokeWidth={8} />
+          <CircularProgress 
+            percentage={overallProgress} 
+            size={100} 
+            strokeWidth={8}
+          />
         </div>
         
         <div className="category-progress-container">
           {Object.keys(categoryProgress).map(category => (
             <div key={category} className="category-progress-item">
-              <h6>{category}</h6>
               <CircularProgress 
                 percentage={categoryProgress[category]} 
                 size={80}
@@ -142,6 +144,7 @@ const ProgressTracker = () => {
                       category === 'Algorithms' ? '#f44336' : 
                       category === 'Data Structures' ? '#9c27b0' : '#4caf50'}
               />
+              <h6>{category}</h6>
             </div>
           ))}
         </div>

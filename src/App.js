@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './styles/general.css';
 import './styles/skilltree.css';
 import { DailyChallengeProvider } from './DailyChallengeContext'; // Import the provider
+import Tutorial from './components/Tutorial';
 
 // Private Route Component
 const PrivateRoute = ({ user, children }) => {
@@ -57,6 +58,7 @@ const App = () => {
               <Route path="/menu" element={<PrivateRoute user={user}><Menu /></PrivateRoute>} />
               <Route path="/daily-challenge" element={<PrivateRoute user={user}><DailyChallenge /></PrivateRoute>} />
               <Route path="/learn" element={<PrivateRoute user={user}><Learn /></PrivateRoute>} />
+              <Route path="/tutorial/:tutorialId" element={<PrivateRoute user={user}><Tutorial /></PrivateRoute>} />
               <Route path="/communities" element={<PrivateRoute user={user}><Communities /></PrivateRoute>} />
               <Route path="/skilltree" element={<PrivateRoute user={user}><SkillTree /></PrivateRoute>} />
               <Route path="/homepage" element={<Home />} />

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, updatePassword, updateProfile, deleteUser } from 'firebase/auth';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { Button, Form, Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { db, storage } from '../firebase/firebase';
 
 const Settings = () => {
   const auth = getAuth();
   const user = auth.currentUser;
-  const db = getFirestore();
-  const storage = getStorage();
+  
   const { t, i18n } = useTranslation();
 
   const [displayName, setDisplayName] = useState(user?.displayName || '');
@@ -33,7 +33,7 @@ const Settings = () => {
       }
     };
     fetchSettings();
-  }, [darkMode, user, db]);
+  }, [darkMode, user]);
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();

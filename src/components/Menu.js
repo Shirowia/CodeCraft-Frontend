@@ -80,11 +80,13 @@ const Menu = () => {
               <h4 className="mb-3">Learning Progress</h4>
               <div className="row">
                 <div className="col-md-6">
-                  <h5 className="text-center">Skills</h5>
-                  <ProgressTracker />
+                  <h5 className="text-center mb-3">Skills</h5>
+                  <div className="d-flex justify-content-center">
+                    <ProgressTracker />
+                  </div>
                 </div>
                 <div className="col-md-6">
-                  <h5 className="text-center">Courses</h5>
+                  <h5 className="text-center mb-3">Courses</h5>
                   {loadingCourses ? (
                     <div className="d-flex justify-content-center">
                       <div className="spinner-border text-light" role="status">
@@ -92,7 +94,9 @@ const Menu = () => {
                       </div>
                     </div>
                   ) : (
-                    <CourseProgressTracker overallProgress={overallCourseProgress} courseProgress={courseProgress} />
+                    <div className="d-flex justify-content-center">
+                      <CourseProgressTracker overallProgress={overallCourseProgress} courseProgress={courseProgress} />
+                    </div>
                   )}
                 </div>
               </div>

@@ -14,6 +14,8 @@ const Learn = () => {
   const [courseProgress, setCourseProgress] = useState({});
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState(null);
+  const [tutorials, setTutorials] = useState([]);
+  const [activeAccordion, setActiveAccordion] = useState(null);
 
   useEffect(() => {
     const fetchUserAndData = async () => {
@@ -43,30 +45,41 @@ const Learn = () => {
         }));
         setCourses(coursesData);
         
+        // Fetch tutorials from Firestore
+        const tutorialsCollection = collection(db, 'tutorials');
+        const tutorialsSnapshot = await getDocs(tutorialsCollection);
+        const tutorialsData = tutorialsSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setTutorials(tutorialsData);
+
         // Fetch user's course progress
         const progressRef = doc(db, 'courseProgress', user.uid);
         const progressSnap = await getDoc(progressRef);
         
+        let existingProgress = {};
         if (progressSnap.exists()) {
-          setCourseProgress(progressSnap.data().courses || {});
-        } else {
-          // Initialize progress data if it doesn't exist
-          const initialProgress = {};
-          coursesData.forEach(course => {
-            initialProgress[course.id] = {
-              completed: false,
-              progressPercentage: 0
-            };
-          });
-          
-          setCourseProgress(initialProgress);
-          
-          // Save initial progress to Firestore
-          await setDoc(doc(db, 'courseProgress', user.uid), {
-            courses: initialProgress,
-            updatedAt: new Date()
-          });
+          existingProgress = progressSnap.data().courses || {};
         }
+        
+        // Ensure all courses have progress entries
+        const initialProgress = {};
+        coursesData.forEach(course => {
+          initialProgress[course.id] = existingProgress[course.id] || {
+            completed: false,
+            progressPercentage: 0
+          };
+        });
+        
+        setCourseProgress(initialProgress);
+        
+        // Update/save progress to Firestore to ensure all courses are tracked
+        await setDoc(doc(db, 'courseProgress', user.uid), {
+          courses: initialProgress,
+          updatedAt: new Date()
+        }, { merge: true });
+        
       } catch (error) {
         console.error('Error fetching learning data:', error);
       } finally {
@@ -130,6 +143,10 @@ const Learn = () => {
     }
   };
 
+  const toggleAccordion = (index) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
+
   if (loading) {
     return (
       <div className="d-flex vh-100">
@@ -146,7 +163,7 @@ const Learn = () => {
   return (
     <div className="d-flex vh-100">
       <Navigation handleLogout={handleLogout} />
-      <div className="flex-grow-1 p-4">
+      <div className="flex-grow-1 p-4 overflow-auto">
         <h2>Learn to Code</h2>
         <hr />
         
@@ -174,11 +191,10 @@ const Learn = () => {
               <div className="accordion-item bg-dark text-white" key={course.id}>
                 <h2 className="accordion-header" id={`heading${index}`}>
                   <button 
-                    className="accordion-button bg-dark text-white" 
+                    className={`accordion-button bg-dark text-white ${activeAccordion !== index ? 'collapsed' : ''}`}
                     type="button" 
-                    data-bs-toggle="collapse" 
-                    data-bs-target={`#collapse${index}`} 
-                    aria-expanded={index === 0 ? "true" : "false"} 
+                    onClick={() => toggleAccordion(index)}
+                    aria-expanded={activeAccordion === index}
                     aria-controls={`collapse${index}`}
                   >
                     <div className="w-100">
@@ -191,9 +207,8 @@ const Learn = () => {
                 </h2>
                 <div 
                   id={`collapse${index}`} 
-                  className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`} 
-                  aria-labelledby={`heading${index}`} 
-                  data-bs-parent="#coursesAccordion"
+                  className={`accordion-collapse collapse ${activeAccordion === index ? 'show' : ''}`}
+                  aria-labelledby={`heading${index}`}
                 >
                   <div className="accordion-body">
                     <div className="mb-3">
@@ -294,6 +309,37 @@ const Learn = () => {
             ))}
           </div>
         </div>
+
+        {/* Tutorials Section */}
+        {tutorials.length > 0 && (
+          <div className="tutorials-section mt-5">
+            <h3 className="section-title">Interactive Tutorials</h3>
+            <div className="row">
+              {tutorials.map(tutorial => (
+                <div key={tutorial.id} className="col-md-6 col-lg-4 mb-4">
+                  <div className="card bg-dark text-white h-100">
+                    <div className="card-body">
+                      <h5 className="card-title">{tutorial.title}</h5>
+                      <p className="card-text">{tutorial.description}</p>
+                      <div className="d-flex justify-content-between mt-3">
+                        <span className="badge bg-info">{tutorial.difficulty}</span>
+                        <span className="badge bg-secondary">{tutorial.estimatedTime}</span>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <button 
+                        className="btn btn-primary w-100"
+                        onClick={() => navigate(`/tutorial/${tutorial.id}`)}
+                      >
+                        Start Tutorial
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

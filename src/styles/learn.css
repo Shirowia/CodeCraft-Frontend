@@ -1,11 +1,12 @@
-.resources-section,
-.courses-section {
-  margin-bottom: 2rem;
+.resources-section, .courses-section, .tutorials-section {
+  margin-bottom: 3rem;
 }
 
 .section-title {
   margin-bottom: 1.5rem;
   position: relative;
+  font-weight: 600;
+  color: #f8f9fa;
 }
 
 .section-title::after {
@@ -18,30 +19,46 @@
   background-color: #0d6efd;
 }
 
+.resources-list {
+  margin-bottom: 0;
+}
+
 .resource-item,
 .course-item {
   margin-bottom: 1rem;
-  transition: transform 0.2s;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
   border-radius: 0.5rem;
+  border: none;
 }
 
 .resource-item:hover,
 .course-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .resource-link,
 .course-link {
   display: inline-block;
+  padding: 0.5rem 1rem;
   margin-top: 0.5rem;
-  color: #0d6efd;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.25rem;
   text-decoration: none;
   font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.resource-link:hover,
+.course-link:hover {
+  background-color: #0069d9;
+  color: white;
 }
 
 .resource-description,
 .course-description {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .progress-tracking {
@@ -67,14 +84,56 @@
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
+.accordion-button.collapsed::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
 .form-range::-webkit-slider-thumb {
-  background: #0d6efd;
+  background-color: #007bff;
 }
 
 .form-range::-moz-range-thumb {
-  background: #0d6efd;
+  background-color: #007bff;
 }
 
 .form-range::-ms-thumb {
   background: #0d6efd;
+}
+
+/* Tutorial cards */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Course progress */
+.progress {
+  height: 1rem;
+  background-color: #343a40;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}
+
+/* Make sure there's enough bottom padding to account for all content */
+.overflow-auto {
+  padding-bottom: 50px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .col-lg-4 {
+    margin-bottom: 1.5rem;
+  }
 }

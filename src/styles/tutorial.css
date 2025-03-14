@@ -1,0 +1,73 @@
+.tutorial-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tutorial-text {
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.code-example-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Improved navigation controls */
+.navigation-controls {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Fix for vertical sizing of buttons */
+.nav-button {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  height: auto;
+  min-height: 36px;
+}
+
+/* Make code blocks more readable */
+pre {
+  border-radius: 8px !important;
+  padding: 15px !important;
+  margin-top: 10px !important;
+  margin-bottom: 20px !important;
+  overflow: auto;
+}
+
+/* Progress indicator */
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  margin: 0 10px;
+  height: 36px;
+}
+
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 0 4px;
+  transition: background-color 0.3s ease;
+}
+
+.progress-dot.active {
+  background-color: #007bff;
+}
+
+/* Responsive fixes */
+@media (max-width: 576px) {
+  .navigation-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .progress-indicator {
+    order: -1;
+    margin: 0 0 15px 0;
+  }
+}

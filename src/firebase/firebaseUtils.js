@@ -51,3 +51,47 @@ export const getUser = async (userId) => {
     return null;
   }
 };
+
+/**
+ * Saves user skill tree progress to Firestore
+ * @param {string} userId - The user's UID
+ * @param {Object} progressData - Skill tree progress data
+ * @returns {Promise<boolean>} - Success status
+ */
+export const saveSkillProgress = async (userId, progressData) => {
+  try {
+    const progressRef = doc(db, "skillProgress", userId);
+    await setDoc(progressRef, {
+      progress: progressData,
+      updatedAt: new Date()
+    }, { merge: true });
+    
+    console.log("Skill progress saved successfully");
+    return true;
+  } catch (error) {
+    console.error("Error saving skill progress:", error);
+    return false;
+  }
+};
+
+/**
+ * Fetches user skill tree progress from Firestore
+ * @param {string} userId - The user's UID
+ * @returns {Object|null} - Skill progress data or null if not found
+ */
+export const getSkillProgress = async (userId) => {
+  try {
+    const progressRef = doc(db, "skillProgress", userId);
+    const progressSnap = await getDoc(progressRef);
+
+    if (progressSnap.exists() && progressSnap.data().progress) {
+      return progressSnap.data().progress;
+    } else {
+      console.log("No skill progress found!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching skill progress:", error);
+    return null;
+  }
+};

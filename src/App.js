@@ -14,6 +14,7 @@ import DailyChallenge from './components/DailyChallenge';
 import Communities from './components/Communities';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './styles/general.css';
+import './styles/skilltree.css';
 import { DailyChallengeProvider } from './DailyChallengeContext'; // Import the provider
 
 // Private Route Component

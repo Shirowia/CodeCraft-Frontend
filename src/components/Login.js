@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import '../styles/general.css';
+import '../styles/login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -40,11 +40,14 @@ const Login = () => {
   };
 
   return (
-    <div className="container vh-100 d-flex align-items-center justify-content-center">
+    <div className="container vh-100 flex-container flex-center">
+
       <div className="row w-100">
         {/* Login Form */}
-        <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <div className="shadow-lg p-5 rounded w-75 dark-mode">
+        <div className="col-md-6 flex-container flex-center">
+
+          <div className="shadow-lg p-5 rounded w-75">
+
             <h2 className="text-center mb-4">Login</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -86,7 +89,8 @@ const Login = () => {
         </div>
 
         {/* Logo Section */}
-        <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
+        <div className="col-md-6 flex-container flex-center border-start border-2">
+
           <img src={logo} alt="CodeCraft Logo" className="img-fluid w-75" />
         </div>
       </div>

@@ -193,14 +193,19 @@ const Learn = () => {
                   <div className="d-flex">
                     <span className="course-name">{course.name}</span>
                     <span className="badge bg-primary">{courseProgress[course.id]?.progressPercentage || 0}% Complete</span>
-                    <button 
-                      className={`collapse-btn ${activeAccordion === index ? 'expanded' : ''}`}
-                      onClick={() => toggleAccordion(index)}
-                      aria-expanded={activeAccordion === index}
-                      aria-controls={`collapse${index}`}
-                    >
-                      <i className="fas fa-chevron-down"></i>
-                    </button>
+                    <div className="collapse-btn-container">
+                      <button 
+                        className={`collapse-btn ${activeAccordion === index ? 'expanded' : ''}`}
+                        aria-expanded={activeAccordion === index}
+                        aria-controls={`collapse${index}`}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent event from bubbling up
+                          toggleAccordion(index);
+                        }}
+                      >
+                        <i className="fas fa-chevron-down"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div 

@@ -84,8 +84,10 @@
 
 .course-header {
   background-color: rgba(152, 117, 190, 0.25);
-  cursor: pointer;
   transition: all 0.3s ease;
+  width: 100%;
+  display: block;
+  cursor: default; /* Change from cursor:pointer to default */
 }
 
 .course-header:hover {
@@ -151,13 +153,13 @@
 .course-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height 0.5s ease-out;
   background-color: rgba(68, 51, 81, 0.25);
 }
 
 .course-content.show {
-  max-height: 2000px; /* Adjust this value based on your content */
-  transition: max-height 0.3s ease-in;
+  max-height: 2000px; /* Set a sufficiently large value */
+  transition: max-height 0.5s ease-in;
 }
 
 .accordion-body {
@@ -272,12 +274,16 @@
 
 /* Course progress */
 .progress {
-  height: 1rem;
-  background-color: #343a40;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .progress-bar {
-  background-color: #007bff;
+  background-color: rgb(215, 169, 255);
+  transition: width 0.3s ease;
 }
 
 /* Progress Section Styling */
@@ -379,6 +385,9 @@
   min-width: 200px;
   margin-right: 1rem;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .form-check-label {
@@ -469,4 +478,128 @@
   margin: 2rem auto 4rem;
   padding: 4rem;
   border-radius: 24px;
+}
+
+/* Make course header clickable */
+.course-header {
+  background-color: rgba(152, 117, 190, 0.25);
+  cursor: default; /* Change from cursor:pointer to default */
+  transition: all 0.3s ease;
+  width: 100%;
+  display: block;
+}
+
+/* Ensure the course header content is properly aligned */
+.course-header .d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+
+/* Make sure the form elements are interactive */
+.form-range, .form-check-input, .btn {
+  cursor: pointer;
+  position: relative;
+  z-index: 2; /* Ensure they're above other elements */
+}
+
+/* Fix progress bar styling */
+.progress {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: rgb(215, 169, 255);
+  transition: width 0.3s ease;
+}
+
+/* Course header and arrow button styling */
+.course-header {
+  background-color: rgba(152, 117, 190, 0.25);
+  cursor: default; /* Change from cursor:pointer to default */
+  transition: all 0.3s ease;
+  width: 100%;
+  display: block;
+}
+
+.course-header:hover {
+  background-color: rgba(152, 117, 190, 0.4);
+}
+
+/* Make sure the arrow button is visible */
+.collapse-btn-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.collapse-btn {
+  background: rgba(215, 169, 255, 0.3);
+  border: 1px solid rgba(215, 169, 255, 0.5);
+  border-radius: 50%;
+  color: rgb(215, 169, 255);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  cursor: pointer; /* Make it clear this is clickable */
+  z-index: 10; /* Ensure it's above other elements */
+  position: relative; /* Required for z-index to work */
+}
+
+.collapse-btn i {
+  transition: transform 0.3s ease;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.collapse-btn.expanded i {
+  transform: rotate(180deg);
+}
+
+.collapse-btn:hover {
+  background: rgba(215, 169, 255, 0.5);
+  color: white;
+  transform: scale(1.1); /* Add a subtle grow effect on hover */
+}
+
+/* Optional: Add a pulsing effect to make it more noticeable */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(215, 169, 255, 0.4); }
+  70% { box-shadow: 0 0 0 5px rgba(215, 169, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(215, 169, 255, 0); }
+}
+
+.collapse-btn:hover {
+  animation: pulse 1.5s infinite;
+}
+
+/* Ensure the course name doesn't push other elements out of view */
+.course-name {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-right: auto;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Badge styling */
+.badge.bg-primary {
+  white-space: nowrap;
+  background-color: rgba(215, 169, 255, 0.2) !important;
+  color: rgb(215, 169, 255);
+  font-weight: normal;
+  padding: 0.5em 1em;
+  margin-right: 0.5rem;
 }

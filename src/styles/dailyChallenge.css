@@ -1,24 +1,50 @@
-/* Background for Daily Challenge page */
+/* Background for Daily Challenge page using a rich purple gradient */
 .daily-challenge-body {
-  background-image: url('../assets/extra.png');
+  background: linear-gradient(135deg, rgba(159, 125, 194, 0.9), rgba(70,40,93,0.9));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  position: fixed;  /* Keep this to ensure background stays fixed */
-  width: 100%;     /* Change from max-width: 50vh to width: 100% */
-  height: 100%;    /* Add this to ensure full height coverage */
-  top: 0;         /* Add this to ensure proper positioning */
-  left: 0;        /* Add this to ensure proper positioning */
-  z-index: -1;    /* Keep this to place background behind content */
+  position: fixed;  
+  width: 100%;     
+  height: 100%;    
+  top: 0;         
+  left: 0;        
+  z-index: -1;    
+  overflow: hidden;
 }
 
-/* New styling for challenge example section */
+/* Header container using a vertical purple gradient and blur */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, rgba(59, 33, 80, 0.95) 0%, rgba(70,40,93,0.85) 100%);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(215,169,255,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Challenge container styled with a soft purple gradient card */
+.challenge-container {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(180deg, rgba(68,51,81,0.85), rgba(92,59,118,0.85));
+  border: 1px solid rgba(215,169,255,0.3);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Hint section with a darker purple overlay and dashed border */
 .hint-section {
-  background-color: rgba(68, 51, 81, 0.75);  /* darker background */
-  border: 2px solid rgb(215, 169, 255,);           /* dashed orange border */
+  background-color: rgba(68,51,81,0.75);
+  border: 2px dashed rgba(215,169,255,0.5);
   border-radius: 0.5rem;
   padding: 1rem;
   margin-top: 1rem;
@@ -27,22 +53,23 @@
 .hint-section h5 {
   margin: 0 0 0.5rem;
   font-weight: bold;
-  color: rgb(162, 112, 202);
+  color: rgb(162,112,202);
 }
 
+/* Example code section with a subtle purple gradient */
 .example-code {
-  background-color: rgb(152, 117, 190, 0.25);           /* dark background for code */
-  color: #dcdcdc;                      /* light text color */
+  background: linear-gradient(135deg, rgba(152,117,190,0.3), rgba(114,65,132,0.3));
+  color: #dcdcdc;
   font-family: 'Courier New', Courier, monospace;
   padding: 1rem;
   border-radius: 0.5rem;
-  overflow-x: auto;                    /* horizontal scroll if needed */
+  overflow-x: auto;
 }
 
-/* New styling for challenge hint */
+/* Example section styled with a purple tint */
 .example-section {
-  background-color: rgb(152, 117, 190, 0.5); /* light orange tint */
-  border-left: 4px solid rgb(69, 48, 92); /* orange border */
+  background: linear-gradient(135deg, rgba(152,117,190,0.5), rgba(114,65,132,0.5));
+  border-left: 4px solid rgb(69,48,92);
   padding: 1rem;
   margin-top: 1rem;
   border-radius: 0.5rem;
@@ -51,7 +78,7 @@
 .example-section h5 {
   margin: 0 0 0.5rem;
   font-weight: bold;
-  color: white;
+  color: #fff;
 }
 
 .hint-section p {
@@ -59,80 +86,15 @@
   font-size: 1rem;
   color: #ffffff;
 }
-/*
-.with-nav {
-  /* This value should match what you use in Menu.js 
-  margin-left: 45vh;
-}
-*/
 
-/* Main content container (ensure no extra padding) */
+/* Ensure no extra spacing on flex containers */
 .flex-grow.overflow-auto,
 .flex-grow.p-4.overflow-auto {
   padding: 0 !important;
   margin: 0;
 }
 
-/* Header container for "Daily Coding Challenge" */
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding: 0.5rem 0; /* adjust if needed, or set to 0 */
-  background-color: #121212;  /* optional */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Header title styling */
-.header-container h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 1.75rem;
-}
-
-/* Header buttons styling */
-.header-container .btn {
-  margin: 0;
-  padding: 0.5rem 1rem;
-}
-
-/* Challenge container styling */
-.challenge-container {
-  padding: 2rem;
-  margin-bottom: 2rem;
-  background-color: rgba(33, 37, 41, 0.95);
-  border: 1px solid rgba(215, 169, 255, 0.2);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* Remove any global spacing from flex-container if used */
-.flex-container {
-  margin: 0;
-  padding: 0;
-}
-
-/* Component-specific nav-closed styles */
-.daily-challenge-wrapper .nav-closed .flex-grow-1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  padding: 3rem 6rem;
-  
-}
-
-.daily-challenge-wrapper .challenge-content {
-  max-width: 1000px;
-  width: 100%;
-  margin: 2rem auto 4rem;
-  padding: 4rem;
-  border-radius: 24px;
-}
-
+/* Daily Challenge wrapper sizing */
 .daily-challenge-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -143,7 +105,7 @@
   z-index: 1;
 }
 
-/* nav-closed state */
+/* Optional nav-closed state adjustments */
 .daily-challenge-wrapper.nav-closed .flex-grow-1 {
   width: 80%;
   margin: 0 auto;

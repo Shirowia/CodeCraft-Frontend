@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import '../styles/general.css';
-import '../styles/tutorial.css';
+import '../styles/dailyChallenge.css';  // Using DailyChallenge stylesheet
 
 const Tutorial = () => {
   const { tutorialId } = useParams();
@@ -15,7 +15,6 @@ const Tutorial = () => {
   const [tutorial, setTutorial] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentSection, setCurrentSection] = useState(0);
-  const [isNavOpen, setIsNavOpen] = useState(true);
 
   useEffect(() => {
     const fetchTutorial = async () => {
@@ -23,7 +22,6 @@ const Tutorial = () => {
         setLoading(true);
         const tutorialRef = doc(db, 'tutorials', tutorialId);
         const tutorialSnap = await getDoc(tutorialRef);
-        
         if (tutorialSnap.exists()) {
           setTutorial(tutorialSnap.data());
         } else {
@@ -35,7 +33,6 @@ const Tutorial = () => {
         setLoading(false);
       }
     };
-
     if (tutorialId) {
       fetchTutorial();
     }
@@ -64,13 +61,11 @@ const Tutorial = () => {
 
   if (loading) {
     return (
-      <div className="tutorial-body">
-        <div className="d-flex with-nav">
-          <Navigation handleLogout={handleLogout} />
-          <div className="flex-grow-1 p-4 d-flex justify-content-center align-items-center">
-            <div className="spinner-border text-primary" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
+      <div className="d-flex vh-100">
+        <Navigation handleLogout={handleLogout} />
+        <div className="flex-grow-1 d-flex justify-content-center align-items-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
       </div>
@@ -79,13 +74,14 @@ const Tutorial = () => {
 
   if (!tutorial) {
     return (
-      <div className="tutorial-body">
-        <div className="d-flex with-nav">
-          <Navigation handleLogout={handleLogout} />
-          <div className="flex-grow-1 p-4">
-            <div className="alert alert-danger">
-              Tutorial not found. <button className="btn btn-link" onClick={() => navigate('/learn')}>Back to Learning</button>
-            </div>
+      <div className="d-flex vh-100">
+        <Navigation handleLogout={handleLogout} />
+        <div className="flex-grow-1 p-4">
+          <div className="alert alert-danger">
+            Tutorial not found.
+            <button className="btn btn-link" onClick={() => navigate('/learn')}>
+              Back to Learning
+            </button>
           </div>
         </div>
       </div>
@@ -95,86 +91,80 @@ const Tutorial = () => {
   const section = tutorial.content[currentSection];
 
   return (
-    <div className="tutorial-wrapper">
-      <div className="tutorial-body">
-        <div className="tutorial-container">
-          <div className={`d-flex with-nav ${isNavOpen ? '' : 'nav-closed'}`}>
-            <Navigation handleLogout={handleLogout} />
-            <div className="flex-grow-1 overflow-auto">
-              <div className="header-container">
-                <div className="content-wrapper">
-                  <div className="header-title-section">
-                    <h2>Interactive Tutorial</h2>
-                    <button 
-                      className="btn btn-secondary" 
-                      onClick={() => navigate('/learn')}
-                    >
-                      Back to Learning
-                    </button>
-                  </div>
+    <>
+      <div className="daily-challenge-body"></div>
+      <div className="daily-challenge-wrapper">
+        <div className="d-flex with-nav">
+          <Navigation handleLogout={handleLogout} />
+          <div className="flex-grow-1">
+            {/* Fixed header at the top */}
+            <div className="header-container d-flex justify-content-between align-items-center">
+              <button className="btn btn-secondary" onClick={() => navigate('/learn')}>
+                Back to Learning
+              </button>
+              <div className="text-center">
+                <h2 className="mb-0">{tutorial.title}</h2>
+                <div className="d-flex gap-2 justify-content-center mt-2">
+                  <span className="badge bg-info">{tutorial.difficulty}</span>
+                  <span className="badge bg-secondary">{tutorial.estimatedTime}</span>
+                  <span className="badge bg-primary">
+                    {currentSection + 1} of {tutorial.content.length}
+                  </span>
                 </div>
               </div>
-
-              <div className="content-wrapper">
-                <div className="tutorial-content bg-dark text-white rounded shadow-sm mb-5">
-                  <h3>{section.section}</h3>
-                  <div className="tutorial-text my-4">
-                    {section.text.split('\n').map((para, index) => (
-                      <p key={index}>{para}</p>
-                    ))}
+              <div style={{ width: '120px' }}></div>
+            </div>
+            {/* Scrollable content container below header */}
+            <div className="content-container">
+              <div className="challenge-container">
+                <h3>{section.section}</h3>
+                <div className="tutorial-text my-4">
+                  {section.text.split('\n').map((para, index) => (
+                    <p key={index}>{para}</p>
+                  ))}
+                </div>
+                {section.codeExample && (
+                  <div className="example-code">
+                    <h5>Code Example</h5>
+                    <SyntaxHighlighter
+                      language={
+                        tutorial.id?.includes('javascript')
+                          ? 'javascript'
+                          : tutorial.id?.includes('python')
+                          ? 'python'
+                          : tutorial.id?.includes('css')
+                          ? 'css'
+                          : 'text'
+                      }
+                      style={vscDarkPlus}
+                      className="rounded"
+                    >
+                      {section.codeExample}
+                    </SyntaxHighlighter>
                   </div>
-                  
-                  {section.codeExample && (
-                    <div className="code-example-container">
-                      <h5>Code Example</h5>
-                      <SyntaxHighlighter 
-                        language={tutorial.id.includes('javascript') ? 'javascript' : 
-                                  tutorial.id.includes('python') ? 'python' : 
-                                  tutorial.id.includes('css') ? 'css' : 'text'}
-                        style={vscDarkPlus}
-                        className="rounded"
-                      >
-                        {section.codeExample}
-                      </SyntaxHighlighter>
-                    </div>
-                  )}
-                  
-                  <div className="navigation-controls">
-                    <div className="progress-indicator">
-                      {tutorial.content.map((_, index) => (
-                        <div 
-                          key={index} 
-                          className={`progress-dot ${index === currentSection ? 'active' : ''}`}
-                          onClick={() => setCurrentSection(index)}
-                        />
-                      ))}
-                    </div>
-                    
-                    <div className="nav-button-container">
-                      <button 
-                        className="btn btn-primary nav-button"
-                        disabled={currentSection === 0}
-                        onClick={handlePreviousSection}
-                      >
-                        <i className="fa fa-arrow-left me-1"></i> Previous
-                      </button>
-                      
-                      <button 
-                        className="btn btn-primary nav-button"
-                        disabled={currentSection === 2}
-                        onClick={handleNextSection}
-                      >
-                        Next <i className="fa fa-arrow-right ms-1"></i>
-                      </button>
-                    </div>
-                  </div>
+                )}
+                <div className="navigation-controls d-flex justify-content-between align-items-center">
+                  <button
+                    className="btn btn-primary nav-button"
+                    disabled={currentSection === 0}
+                    onClick={handlePreviousSection}
+                  >
+                    <i className="fa fa-arrow-left me-1"></i> Previous
+                  </button>
+                  <button
+                    className="btn btn-primary nav-button"
+                    disabled={currentSection === tutorial.content.length - 1}
+                    onClick={handleNextSection}
+                  >
+                    Next <i className="fa fa-arrow-right ms-1"></i>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

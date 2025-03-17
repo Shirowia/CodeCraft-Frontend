@@ -1,339 +1,145 @@
-/* Container layout */
-.challenge-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Header section */
-.d-flex.justify-content-between.align-items-center.mb-4 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  flex-wrap: wrap;
-  gap: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #121212;
-  padding: 0.5rem 0;
-}
-
-.d-flex.justify-content-between.align-items-center.mb-4 h2 {
+/* Background for Daily Challenge page */
+.daily-challenge-body {
+  background-image: url('../assets/extra.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  max-width: 50vh;
   margin: 0;
-  font-size: 1.75rem;
+  padding: 0;
+  position: fixed; /* Add this to ensure background covers entire viewport */
+  width: 100%;    /* Add this to ensure background spans full width */
+  z-index: -1;    /* Add this to place background behind content */
 }
 
-.d-flex.justify-content-between.align-items-center.mb-4 .btn {
-  min-width: initial;
-  white-space: nowrap;
+/* New styling for challenge example section */
+.hint-section {
+  background-color: rgba(68, 51, 81, 0.75);  /* darker background */
+  border: 2px solid rgb(215, 169, 255,);           /* dashed orange border */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
-/* Challenge details card */
-.challenge-details {
-  border-left: 4px solid #0d6efd;
-  margin-bottom: 20px;
-  background-color: #1e1e1e;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  padding: 1.5rem;
-}
-
-.challenge-details:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.challenge-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin: 1.2rem 0;
-}
-
-/* Example section */
-.example-section {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 1.2rem;
-  border-radius: 6px;
-  margin-top: 1.5rem;
-  border-left: 3px solid #0d6efd;
+.hint-section h5 {
+  margin: 0 0 0.5rem;
+  font-weight: bold;
+  color: rgb(162, 112, 202);
 }
 
 .example-code {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(152, 117, 190, 0.25);           /* dark background for code */
+  color: #dcdcdc;                      /* light text color */
+  font-family: 'Courier New', Courier, monospace;
   padding: 1rem;
-  border-radius: 6px;
-  font-family: 'Consolas', 'Courier New', monospace;
-  margin-top: 0.75rem;
-  white-space: pre-wrap;
-  overflow-x: auto;
-  font-size: 0.95rem;
-  color: #e9ecef;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  overflow-x: auto;                    /* horizontal scroll if needed */
 }
 
-/* Hint section */
-.hint-section {
-  background-color: rgba(255, 193, 7, 0.1);
-  padding: 1.2rem;
-  border-radius: 6px;
-  margin-top: 1.5rem;
-  border-left: 3px solid #ffc107;
+/* New styling for challenge hint */
+.example-section {
+  background-color: rgb(152, 117, 190, 0.5); /* light orange tint */
+  border-left: 4px solid rgb(69, 48, 92); /* orange border */
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
 }
 
-/* Editor section */
-.solution-section {
-  border-left: 4px solid #28a745;
-  background-color: #1e1e1e;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  padding: 1.5rem;
-}
-
-.solution-section:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.solution-section h4 {
-  margin-bottom: 1rem;
-}
-
-/* Language selector */
-.language-selector {
-  width: auto;
-  max-width: 150px;
-  background-color: #343a40;
+.example-section h5 {
+  margin: 0 0 0.5rem;
+  font-weight: bold;
   color: white;
-  border-color: #495057;
-  border-radius: 4px;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.9rem;
 }
 
-.language-selector:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.hint-section p {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+}
+/*
+.with-nav {
+  /* This value should match what you use in Menu.js 
+  margin-left: 45vh;
+}
+*/
+
+/* Main content container (ensure no extra padding) */
+.flex-grow.overflow-auto,
+.flex-grow.p-4.overflow-auto {
+  padding: 0 !important;
+  margin: 0;
 }
 
-.editor-container {
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 1rem 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Header container for "Daily Coding Challenge" */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem 0; /* adjust if needed, or set to 0 */
+  background-color: #121212;  /* optional */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* History section */
-.history-section {
-  border-left: 4px solid #6c757d;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 1.5rem;
+/* Header title styling */
+.header-container h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.75rem;
 }
 
-.history-section h4 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.table-dark {
-  background-color: #1a1e21;
-  margin-bottom: 0;
-}
-
-.table-dark thead th {
-  border-bottom: 2px solid #32383e;
-  background-color: #212529;
-  padding: 0.75rem;
-  font-weight: 500;
-}
-
-.table-dark td, .table-dark th {
-  border-color: #32383e;
-  padding: 0.75rem;
-  vertical-align: middle;
-}
-
-/* Button styling */
-.btn {
-  font-weight: 500;
+/* Header buttons styling */
+.header-container .btn {
+  margin: 0;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+/* Challenge container styling */
+.challenge-container {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background-color: rgba(33, 37, 41, 0.95);
+  border: 1px solid rgba(215, 169, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.btn-primary:hover {
-  background-color: #0069d9;
-  border-color: #0062cc;
+/* Remove any global spacing from flex-container if used */
+.flex-container {
+  margin: 0;
+  padding: 0;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
-}
-
-.btn-outline-light {
-  color: #f8f9fa;
-  border-color: #f8f9fa;
-}
-
-.btn-outline-light:hover {
-  color: #212529;
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
-}
-
-/* Alert styling */
-.alert {
-  border-radius: 6px;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.alert-success {
-  background-color: rgba(40, 167, 69, 0.15);
-  border-color: rgba(40, 167, 69, 0.3);
-  color: #d4edda;
-}
-
-.alert-danger {
-  background-color: rgba(220, 53, 69, 0.15);
-  border-color: rgba(220, 53, 69, 0.3);
-  color: #f8d7da;
-}
-
-.alert-warning {
-  background-color: rgba(255, 193, 7, 0.15);
-  border-color: rgba(255, 193, 7, 0.3);
-  color: #fff3cd;
-}
-
-.alert-secondary {
-  background-color: rgba(108, 117, 125, 0.15);
-  border-color: rgba(108, 117, 125, 0.3);
-  color: #e2e3e5;
-}
-
-/* Badge styling */
-.badge {
-  padding: 0.35em 0.65em;
-  font-weight: 500;
-  border-radius: 4px;
-}
-
-/* Layout and spacing adjustments */
-.mt-3 {
-  margin-top: 1rem;
-}
-
-.mb-4 {
-  margin-bottom: 1.5rem;
-}
-
-.p-4 {
-  padding: 1.5rem;
-}
-
-.p-3 {
-  padding: 1rem;
-}
-
-.rounded {
-  border-radius: 0.25rem;
-}
-
-/* Fix for the overflow issue in DailyChallenge page */
-.flex-grow-1.p-4.overflow-auto {
+/* Component-specific nav-closed styles */
+.daily-challenge-wrapper .nav-closed .flex-grow-1 {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.d-flex.vh-100 {
-  min-height: 100vh;
-  height: auto;
-}
-
-/* Add styles for the modal */
-.challenge-history-modal .modal-content {
-  background-color: #212529;
-  color: white;
-}
-
-.challenge-history-modal .modal-header {
-  border-bottom: 1px solid #32383e;
-}
-
-.challenge-history-modal .modal-footer {
-  border-top: 1px solid #32383e;
-}
-
-.challenge-history-modal .btn-close {
-  color: white;
-  filter: invert(1) grayscale(100%) brightness(200%);
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .d-flex.justify-content-between.align-items-center.mb-4 {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  align-items: center;
+  width: 80%;
+  padding: 3rem 6rem;
   
-  .d-flex.justify-content-between.align-items-center.mb-4 div {
-    margin-top: 0.5rem;
-    width: 100%;
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .d-flex.justify-content-between.align-items-center.mb-4 div .btn {
-    flex: 1;
-  }
-
-  .challenge-details, .solution-section, .history-section {
-    padding: 1rem;
-  }
-  
-  .example-code {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-  }
-
-  .d-flex.justify-content-between {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .d-flex.justify-content-between button {
-    width: 100%;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
 }
 
-@media (max-width: 576px) {
-  .editor-container {
-    height: 300px;
-  }
-  
-  .table-responsive {
-    font-size: 0.85rem;
-  }
+.daily-challenge-wrapper .challenge-content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 2rem auto 4rem;
+  padding: 4rem;
+  border-radius: 24px;
+}
+
+.daily-challenge-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* nav-closed state */
+.daily-challenge-wrapper.nav-closed .flex-grow-1 {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
 }

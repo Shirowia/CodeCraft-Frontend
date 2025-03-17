@@ -1,8 +1,18 @@
+/* Main container */
 .skill-tree-container {
-  background-color: #1a1d23;
-  border-radius: 8px;
-  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  background-color: rgba(68, 51, 81, 0.5) !important;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(45, 43, 46, 0.5);
+  border-radius: 2rem;
+  padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0.5rem auto;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Override beautiful-skill-tree styles for better dark mode integration */
@@ -15,11 +25,11 @@
 }
 
 .bst-node-complete {
-  box-shadow: 0 0 15px rgba(48, 138, 104, 0.5);
+  box-shadow: 0 0 15px rgba(162, 112, 202, 0.5);
 }
 
 .bst-edge-complete {
-  filter: drop-shadow(0 0 2px rgba(48, 138, 104, 0.5));
+  filter: drop-shadow(0 0 2px rgba(162, 112, 202, 0.5));
 }
 
 /* Add animation to nodes when hovering */
@@ -38,7 +48,7 @@
 }
 
 /* Custom scrollbar for the container */
-.skill-tree-container::-webkit-scrollbar {
+.skill-tree-container::-webkit-scrollbar{
   width: 8px;
 }
 
@@ -55,23 +65,29 @@
   background-color: #6a6a6a;
 }
 
+/* Custom skill tree container */
 .custom-skill-tree {
-  background-color: #1a1d23;
-  border-radius: 8px;
-  padding: 20px;
+  flex: 1;
+  background-color: rgba(68, 51, 81, 0.75);
+  border-radius: 2rem;
+  padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow-x: auto;
+  min-width: 600px;
   max-width: 100%;
 }
 
+/* Tree layout */
 .tree-container {
-  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .skill-category {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 2rem;
 }
 
 .skill-branch {
@@ -106,14 +122,14 @@
   top: -20px;
   width: 2px;
   height: 20px;
-  background-color: #4a4a4a;
+  background-color: rgb(215, 169, 255);
 }
 
 .skill-node {
-  background-color: #2a2a2a;
-  border: 2px solid #4a4a4a;
-  border-radius: 10px;
-  padding: 12px 20px;
+  background-color: rgba(152, 117, 190, 0.25);
+  border: 2px solid rgb(215, 169, 255);
+  border-radius: 2rem;
+  padding: 1.5rem 2rem;
   color: #ffffff;
   cursor: pointer;
   text-align: center;
@@ -129,13 +145,13 @@
 }
 
 .skill-node.completed {
-  background-color: #1e5641;
-  border-color: #308a68;
-  box-shadow: 0 0 15px rgba(48, 138, 104, 0.5);
+  background-color: rgba(162, 112, 202, 0.5);
+  border-color: rgb(215, 169, 255);
+  box-shadow: 0 0 15px rgba(162, 112, 202, 0.5);
 }
 
 .skill-node.locked {
-  background-color: #3a3a3a;
+  background-color: rgba(68, 51, 81, 0.75);
   color: #888;
   cursor: not-allowed;
 }
@@ -145,7 +161,7 @@
 }
 
 .skill-node.available {
-  border-color: #ffc107;
+  border-color: rgb(215, 169, 255);
 }
 
 .lock-icon {
@@ -154,7 +170,7 @@
 }
 
 .root-node {
-  background-color: #3a3a3a;
+  background-color: rgba(69, 48, 92, 0.75);
   font-weight: bold;
 }
 
@@ -189,4 +205,65 @@
 
 .text-danger {
   color: #dc3545;
+}
+
+/* Update the details panel styles */
+.skill-details-wrapper {
+  width: 300px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 1rem;
+  height: fit-content;
+}
+
+/* Make the flex container respect widths */
+.d-flex.flex-row {
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Styling for the skill completion buttons */
+.skill-details .btn-success {
+  background-color: #ffffff;
+  border-color: rgb(215, 169, 255);
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+.skill-details .btn-success:hover {
+  background-color: #000000;
+  border-color: rgb(215, 169, 255);
+  color: rgb(215, 169, 255);
+  transform: scale(1.05);
+}
+
+.skill-details .btn-warning {
+  background-color: #000000;
+  border-color: rgb(215, 169, 255);
+  color:  rgb(215, 169, 255);
+  transition: all 0.3s ease;
+}
+
+.skill-details .btn-warning:hover {
+  background-color: #ffffff;
+  border-color: rgb(215, 169, 255);
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.skilltree-wrapper {
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+  height: calc(100vh - 4rem); /* Adjust if you have a fixed header/footer */
+  overflow: hidden; /* Prevent background scrolling */
+  padding: 2rem; /* Ensures spacing on all sides */
+}
+
+.skilltree-content {
+  height: 100%;
+  overflow-y: hidden; /* Only this container scrolls */
+  align-items: center;
+  padding: 2rem; /* Internal spacing so text doesn't touch edges */
+  box-sizing: border-box;
 }

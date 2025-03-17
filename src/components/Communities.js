@@ -13,6 +13,7 @@ const Communities = () => {
   const [newMessage, setNewMessage] = useState('');
   const [file, setFile] = useState(null);
   const [fileError, setFileError] = useState('');
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const navigate = useNavigate();
   const user = auth.currentUser;
   const chatContainerRef = useRef(null);
@@ -88,10 +89,21 @@ const Communities = () => {
     }
   };
 
+  const textareaStyles = {
+    backgroundColor: isTextareaFocused || newMessage ? 'transparent' : 'white',
+    color: newMessage ? 'white' : 'rgb(215, 169, 255)',
+    border: '1px solid rgba(215, 169, 255, 0.2)',
+    borderRadius: '8px',
+    resize: 'none',
+    transition: 'all 0.3s ease'
+  };
+
   return (
-    <div className="d-flex vh-100">
+    <div className="d-flex with-nav">
+
       <Navigation handleLogout={handleLogout} />
-      <div className="flex-grow-1 p-4">
+      <div className="flex-grow-1 p-4 overflow-auto">
+
         <h2>Community Chat</h2>
         <hr />
         <div ref={chatContainerRef} className="chat-container bg-dark text-white p-3 shadow-sm" style={{ height: '60vh', overflowY: 'auto' }}>
@@ -118,7 +130,10 @@ const Communities = () => {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyPress={handleKeyPress}
+              onFocus={() => setIsTextareaFocused(true)}
+              onBlur={() => setIsTextareaFocused(false)}
               placeholder="Type your message here..."
+              style={textareaStyles}
             ></textarea>
           </div>
           <div className="mb-2">

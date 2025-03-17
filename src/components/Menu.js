@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import Navigation from './Navigation';
 import '../styles/general.css';
+import '../styles/menu.css';
 import { DailyChallengeContext } from '../DailyChallengeContext';
 import ProgressTracker from './ProgressTracker';
 import CourseProgressTracker from './CourseProgressTracker';
@@ -19,19 +20,14 @@ const Menu = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       const currentUser = auth.currentUser;
-      
       if (!currentUser) {
         navigate('/login');
         return;
       }
-      
       setUser(currentUser);
-      
       try {
-        // Fetch course progress
         const progressRef = doc(db, 'courseProgress', currentUser.uid);
         const progressSnap = await getDoc(progressRef);
-        
         if (progressSnap.exists()) {
           setCourseProgress(progressSnap.data().courses || {});
         }
@@ -41,7 +37,6 @@ const Menu = () => {
         setLoadingCourses(false);
       }
     };
-    
     fetchUserData();
   }, [navigate]);
 
@@ -54,38 +49,46 @@ const Menu = () => {
     }
   };
 
-  // Calculate overall course progress
   const calculateCourseProgress = () => {
     if (!courseProgress || Object.keys(courseProgress).length === 0) {
       return 0;
     }
-    
-    const totalProgress = Object.values(courseProgress).reduce((sum, course) => 
-      sum + (course.progressPercentage || 0), 0);
-    
+    const totalProgress = Object.values(courseProgress).reduce(
+      (sum, course) => sum + (course.progressPercentage || 0),
+      0
+    );
     return Math.round(totalProgress / Object.keys(courseProgress).length);
   };
 
   const overallCourseProgress = calculateCourseProgress();
 
+  useEffect(() => {
+    document.body.classList.add('menu-body');
+    return () => {
+      document.body.classList.remove('menu-body');
+    };
+  }, []);
+
   return (
-    <div className="d-flex vh-100">
+    <div className="d-flex with-nav">
       <Navigation handleLogout={handleLogout} />
-      <div className="flex-grow-1 p-4">
+      <div className="flex-grow-1 p-4 overflow-auto">
         <h2>Welcome, {user ? user.displayName || 'User' : 'Guest'}!</h2>
-        <hr />
-        <div className="row">
-          <div className="col-lg-6 mb-4">
-            <div className="text-white card p-4 shadow-sm h-100">
-              <h4 className="mb-3">Learning Progress</h4>
-              <div className="row">
-                <div className="col-md-6">
+
+        {/* Main Layout: Two Columns */}
+        <div className="menu-layout">
+          {/* Column 1 - Learning Progress */}
+          <div className="menu-column-main">
+            <div className="card p-4 shadow-sm">
+              <h3 className='mb-4' >Learning Progress</h3>
+              <div className="d-flex flex-column">
+                <div className="mb-4">
                   <h5 className="text-center mb-3">Skills</h5>
                   <div className="d-flex justify-content-center">
                     <ProgressTracker />
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div>
                   <h5 className="text-center mb-3">Courses</h5>
                   {loadingCourses ? (
                     <div className="d-flex justify-content-center">
@@ -95,35 +98,40 @@ const Menu = () => {
                     </div>
                   ) : (
                     <div className="d-flex justify-content-center">
-                      <CourseProgressTracker overallProgress={overallCourseProgress} courseProgress={courseProgress} />
+                      <CourseProgressTracker 
+                        overallProgress={overallCourseProgress} 
+                        courseProgress={courseProgress} 
+                      />
                     </div>
                   )}
                 </div>
-              </div>
-              <div className="text-center mt-3">
-                <div className="d-flex gap-2 justify-content-center">
-                  <button 
-                    className="btn btn-outline-light"
-                    onClick={() => navigate('/skilltree')}
-                  >
-                    View Skill Tree
-                  </button>
-                  <button 
-                    className="btn btn-outline-light"
-                    onClick={() => navigate('/learn')}
-                  >
-                    View Courses
-                  </button>
+                <div className="text-center mt-3">
+                  <div className="flex-container gap-2 flex-center">
+                    <button 
+                      className="btn-primary"
+                      onClick={() => navigate('/skilltree')}
+                    >
+                      View Skill Tree
+                    </button>
+                    <button 
+                      className="btn-primary"
+                      onClick={() => navigate('/learn')}
+                    >
+                      View Courses
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div className="col-lg-6">
-            <div className="text-white card p-4 shadow-sm h-100">
-              <h4 className="mb-3">Daily Challenge</h4>
+
+          {/* Column 2 - Daily Challenge (Row 1) and Quick Access (Row 2) */}
+          <div className="menu-column-secondary">
+            {/* Row 1 - Daily Challenge */}
+            <div className="card p-4 shadow-sm mb-4">
+              <h3 className="mb-3">Daily Challenge</h3>
               {challengeLoading ? (
-                <div className="d-flex justify-content-center">
+                <div className="flex-container flex-center">
                   <div className="spinner-border text-light" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div>
@@ -134,44 +142,34 @@ const Menu = () => {
                 <div>
                   <h5>{challenge.name}</h5>
                   <p className="mb-4">{challenge.description}</p>
-                  {challenge.createdAt && challenge.createdAt.toDate && (
-                    <p className="text-muted">
-                      <small>Posted: {challenge.createdAt.toDate().toLocaleDateString()}</small>
-                    </p>
-                  )}
-                  <div className="mt-3">
-                    <button 
-                      className="btn btn-primary"
-                      onClick={() => navigate('/daily-challenge')}
-                    >
-                      Solve Challenge
-                    </button>
-                  </div>
+                  <button 
+                    className="btn-primary"
+                    onClick={() => navigate('/daily-challenge')}
+                  >
+                    Solve Challenge
+                  </button>
                 </div>
               )}
             </div>
-          </div>
-        </div>
 
-        <div className="row mt-4">
-          <div className="col-lg-12">
-            <div className="text-white card p-4 shadow-sm">
-              <h4 className="mb-3">Quick Access</h4>
-              <div className="d-flex gap-3 flex-wrap">
+            {/* Row 2 - Quick Access */}
+            <div className="card p-4 shadow-sm">
+              <h3 className="mb-3">Quick Access</h3>
+              <div className="d-flex flex-column gap-2">
                 <button 
-                  className="btn btn-outline-light"
+                  className="btn-primary"
                   onClick={() => navigate('/learn')}
                 >
                   Learning Resources
                 </button>
                 <button 
-                  className="btn btn-outline-light"
+                  className="btn-primary"
                   onClick={() => navigate('/communities')}
                 >
                   Community
                 </button>
                 <button 
-                  className="btn btn-outline-light"
+                  className="btn-primary"
                   onClick={() => navigate('/profile')}
                 >
                   My Profile
@@ -180,6 +178,7 @@ const Menu = () => {
             </div>
           </div>
         </div>
+        {/* End Main Layout */}
       </div>
     </div>
   );

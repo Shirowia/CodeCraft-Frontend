@@ -1,46 +1,135 @@
+@font-face {
+    font-family: 'Space Mono Regular';
+    src: url('../assets/SpaceMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space Mono Bold';
+    src: url('../assets/SpaceMono-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend Peta';
+    src: url('../assets/LexendPeta-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+p {
+    font-size: 20px;
+    font-family: 'Space Mono Regular';
+}
+
+label {
+    font-size: 16px;
+    font-family: 'Space Mono Regular';
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+
+    font-size: 2em;
+    font-family: 'Space Mono Bold';
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    p {
+        font-size: 14px;
+    }
+    label {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    p {
+        font-size: 18px;
+    }
+    label{
+        font-size: 18px;
+    }
+}
+
 body, html {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: scroll;
+    padding: 1rem;  /* Global padding so nothing is flush with the viewport edge */
 }
 
-/* Base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    /*background-color: #121212;*/
-    background-image: url('src\assets\mainBG.png');
+    background-size: contain;
+    /*background-image: url('../assets/mainBG.png');*/
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lexend Peta', 'Space Mono Regular', 'Space Mono Bold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    line-height: 1.5;
 }
 
-.homepage-logo {
-    max-height: 50vh;
-    width: auto;
+.menu-body {
+    background-image: url('../assets/mainBG.png') !important;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 2rem;
+    padding: 0;
+    overflow: hidden;
 }
+
+/* Update your existing card styles for better visibility */
+.card {
+    background: linear-gradient(180deg, 
+    rgba(215, 169, 255, 0.25) 0%, 
+    rgba(0, 0, 0, 0.3) 100%
+    );
+    backdrop-filter:blur(10px);
+    background-blend-mode: color-dodge;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+}
+
+
 
 .btn-primary:focus, .btn-primary.focus {
     outline: none;
     box-shadow: none;
 }
 
+/* Update game menu button styles */
 .game-menu-button {
     transition: transform 0.3s ease, background-color 0.3s ease;
-    border: 2px solid white;
-    padding: 0.5rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 2rem;
     border-radius: 10px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    text-align: center;
+    width: 80% !important;  /* Override the w-100 class */
+    margin: 0 auto;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .game-menu-button:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
 }
 
 .dark-mode {
@@ -60,42 +149,6 @@ body {
     background-color: #333;
     color: white;
     border: none;
-}
-
-.homepage-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #121212;
-}
-
-.homepage-logo {
-    max-height: 50vh;
-    width: auto;
-    margin-bottom: 2rem;
-    max-width: 200px;
-}
-
-.homepage-buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-.homepage-button {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 0.25rem;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.homepage-button:hover {
-    background-color: #0069d9;
 }
 
 a {
@@ -211,27 +264,121 @@ a:hover {
     margin-right: 10px;
 }
 
-.d-flex {
+/* Layout Utilities */
+.flex-container {
     display: flex;
-    height: 90%;
+    height: 100%;
+    transition: margin-left 0.3s ease;
+    overflow: hidden;
 }
+
+.with-nav {
+    margin-left: 45vh;
+    transition: margin-left 0.3s ease;
+}
+
+/* Update the nav-off state */
+.nav-off .with-nav {
+    margin-left: 0;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.gap-1 {
+    gap: 0.5rem;
+}
+
+.gap-2 {
+    gap: 1rem;
+}
+
 
 .vh-100 {
     min-height: calc(100vh - 2rem) !important;
     max-height: unset !important;
 }
 
-.flex-grow-1 {
+.flex-grow {
     flex-grow: 1;
-    overflow: auto; /* Allow scrolling within this container if needed */
+    overflow: visible; /* Allow content to overflow */
+    min-height: 0; /* Allow shrinking */
 }
 
+.flex-grow.p-4.overflow-auto {
+    padding: 0 !important;
+    margin: 0;
+  }
+
+/* Update the bg-dark class */
 .bg-dark {
-    background-color: #1e1e1e !important;
+    background-color: rgba(68, 51, 81, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(45, 43, 46, 0.5);
+    border-radius: 2rem;
 }
 
 .text-white {
     color: #ffffff;
+}
+
+.text-primary {
+    display: block;
+    color: rgb(0, 0, 0) !important;
+    font-family: 'space mono bold';
+    margin-top: 2rem;
+    font-size: 18px;
+}
+
+.text-secondary {
+    display: block;
+    color: rgb(255, 255, 255) !important;
+    font-family: 'space mono bold';
+    margin-top: 2rem;
+    font-size: 15px;
+}
+
+.text-primary:hover {
+    color: rgb(162, 112, 202) !important;
+}
+
+.text-secondary:hover {
+    color: rgb(162, 112, 202) !important;
+}
+
+/* Add or update error message styling */
+.text-danger {
+    color: rgba(208, 208, 208, 0.9) !important;
+    font-family: 'space mono regular';
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Spacing Utilities */
+.p-1 {
+    padding: 0.25rem;
+}
+
+.p-2 {
+    padding: 0.5rem;
 }
 
 .p-3 {
@@ -239,18 +386,60 @@ a:hover {
 }
 
 .p-4 {
-    padding: 1.5rem !important;
+    padding: 1.5rem;
+}
+
+.m-1 {
+    margin: 0.25rem;
+}
+
+.m-2 {
+    margin: 0.5rem;
+}
+
+.m-3 {
+    margin: 1rem;
+}
+
+.m-4 {
+    margin: 1.5rem;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
 }
 
 .mb-3 {
     margin-bottom: 1rem;
 }
 
-.card {
-    background-color: #2a2a2a;
-    border: none;
-    border-radius: 0.5rem;
+.mb-4 {
     margin-bottom: 1.5rem;
+}
+
+
+.mb-3 {
+    margin-bottom: 1rem;
 }
 
 .shadow-sm {
@@ -280,12 +469,72 @@ a:hover {
 .overflow-auto {
     overflow: auto !important;
     padding-bottom: 2rem !important;
+    height: 100%; /* Take full height */
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 1.75rem; /* Increase rounded edges for buttons */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'space mono regular';
+    font-size: 15px;
 }
+
+
+.btn-primary, button.btn-primary,
+.menu-column-secondary .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background-color: black;
+    color: rgb(162, 112, 202);
+    border-radius: 1.7rem;
+    border: 2px solid rgb(70, 40, 93);
+    padding: 0.75rem 1.5rem;
+    font-family: 'space mono regular';
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    
+}
+
+.btn-primary:hover, button.btn-primary:hover,
+.menu-column-secondary .btn-primary:hover {
+    background-color: #ffffff;
+    color:rgb(70, 40, 93);
+    transform: scale(1.02);
+    border: 2px solid rgb(70, 40, 93);
+}
+
+.btn-secondary,
+.profile-container .btn-secondary {
+    background-color: rgb(112, 69, 147);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.7rem;
+  font-family: 'space mono regular';
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover,
+.profile-container .btn-secondary:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(112, 69, 147);
+  transform: scale(1.02);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid currentColor;
+}
+
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 
 .btn-secondary {
     background-color: #6c757d;
@@ -312,28 +561,56 @@ a:hover {
     margin-bottom: 0.5rem;
 }
 
+/* Update nav-link styles for better visibility */
 .nav-link {
-    color: white !important;
+    color: rgb(162, 112, 202) !important;
     padding: 0.5rem 0.75rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    font-family: 'space mono bold';
+    font-size: 1.25rem;
 }
 
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
 }
 
+/* Update the form control styles */
 .form-control {
-    background-color: #343a40;
-    border: 1px solid #454d55;
-    color: white;
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(92, 59, 118, 0.3);
+    border-radius: 1.6rem;
+    color: rgb(92, 59, 118);
+    font-family: 'space mono regular';
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 .form-control:focus {
-    background-color: #343a40;
-    color: white;
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    background-color: rgba(0,0,0, 0.5);
+    border-color: rgb(70, 40, 93);
+    box-shadow: 0 0 0 2px rgba(70, 40, 93, 0.2);
+    color: rgb(194, 153, 228);
+    outline: none;
+    
+}
+
+.form-control::placeholder {
+    color: rgba(162, 112, 202, 0.7);
+    font-family: 'space mono regular';
+}
+
+/* Override autocomplete styles */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus {
+    -webkit-text-fill-color: rgb(112, 69, 147);
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.5) inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .tutorial-content {
@@ -341,10 +618,33 @@ a:hover {
     margin-bottom: 3rem;
 }
 
+
+
+.menu-column-main {
+    flex: 1.5; /* Adjust width ratio as needed */
+  }
+  
+.menu-column-secondary {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+/* Responsive Utilities */
 @media (max-width: 768px) {
-    .d-flex.vh-100 {
+    .flex-container {
         flex-direction: column;
     }
+    
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-full-width {
+        width: 100% !important;
+    }
+
 
     .container {
         padding: 0;
@@ -354,4 +654,190 @@ a:hover {
         width: 100% !important;
         height: auto !important;
     }
+
+    .d-flex {
+        flex-direction: column;
+    }
+
+    .menu-layout {
+        flex-direction: column;
+    }
+}
+.nav-off .navigation-wrapper {
+    transform: translateX(-100%);
+}
+
+.nav-off .navigation-container {
+    display: none;
+}
+
+.nav-off .flex-container {
+    margin-left: 0;
+}
+
+.nav-off .menu-layout {
+    gap: 2rem;
+}
+
+.nav-off .menu-column-main {
+    flex: 2; /* increased width */
+}
+
+.nav-off .menu-column-secondary {
+    flex: 1.2; /* increased width */
+}
+
+/* Ensure proper spacing when nav is closed */
+
+
+/* Navigation styles */
+
+.navigation-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vh;
+    height: 100vh;
+    overflow-y: hidden;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    padding-top: 4rem;
+    padding-left: 2rem;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+.navigation-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navigation-container .nav.flex-column:first-of-type {
+    margin-top: 2rem;
+}
+
+/* Style for the buttons container */
+.navigation-container .nav.flex-column:last-of-type {
+    margin-top: auto;
+    padding-bottom: 2rem;
+}
+.navigation-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+    width: 250px;
+    max-height: 700px;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.toggle-container {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100; /* higher than .navigation-wrapper */
+}
+
+.toggle-btn {
+    background: rgba(192, 154, 222, 0.5);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-logo {
+    height: 50px;
+    padding: 3px;
+}
+.profile-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.profile-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem;
+    margin-top: -2rem;
+    background: linear-gradient(180deg, 
+        rgba(114, 65, 132, 0.5) 0%, 
+        rgba(0, 0, 0, 0.25) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+}
+
+.profile-btn {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.profile-container h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Remove these conflicting styles */
+.nav-closed .flex-grow-1 {
+  /* Remove */
+}
+
+.nav-closed .content-wrapper,
+.nav-closed .tutorial-content,
+.nav-closed .daily-challenge-content,
+.nav-closed .learn-content,
+.nav-closed .profile-container {
+  /* Remove */
+}
+
+.nav-closed .header-container {
+  /* Remove */
+}
+
+.nav-closed .header-title-section {
+  /* Remove */
+}
+
+.nav-closed .p-4 {
+  /* Remove */
+}
+
+/* Keep only the basic nav-closed state */
+.nav-closed .with-nav {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+/* Keep only the basic responsive utilities */
+@media (max-width: 768px) {
+  .nav-closed .flex-grow-1 {
+    width: 100%;
+  }
 }

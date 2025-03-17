@@ -5,10 +5,13 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { Button, Form, Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { db, storage } from '../firebase/firebase';
+import { useNavigate } from 'react-router-dom';
+import '../styles/profile.css';
 
 const Settings = () => {
   const auth = getAuth();
   const user = auth.currentUser;
+  const navigate = useNavigate();
   
   const { t, i18n } = useTranslation();
 
@@ -91,43 +94,59 @@ const Settings = () => {
   };
 
   return (
-    <div className="bg-dark text-white container mt-5 p-5 bg-light text-black rounded shadow">
-      <h2 className="mb-4">{t('Settings')}</h2>
-      {successMessage && <Alert variant="success">{successMessage}</Alert>}
-      {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-      
-      <Form onSubmit={handleProfileUpdate} className="mb-4">
-        <Form.Group className="mb-3">
-          <Form.Label>{t('Display Name')}</Form.Label>
-          <Form.Control type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-        </Form.Group>
-        <Button variant="primary" type="submit" className="w-100">{t('Update Profile')}</Button>
-      </Form>
+    <div className="flex-container">
+      <div className="flex-grow p-4 profile-center">
+        <div className="profile-container">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2>{t('Settings')}</h2>
+            <button 
+              className="btn-secondary"
+              onClick={() => navigate('/menu')}
+            >
+              Close
+            </button>
+          </div>
+          
+          {successMessage && <Alert variant="success">{successMessage}</Alert>}
+          {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+          
+          <Form onSubmit={handleProfileUpdate} className="mb-4">
+            <Form.Group className="mb-3">
+              <Form.Label>{t('Display Name')}</Form.Label>
+              <Form.Control type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100">{t('Update Profile')}</Button>
+          </Form>
 
-      <Form onSubmit={handlePasswordChange} className="mb-4">
-        <Form.Group className="mb-3">
-          <Form.Label>{t('New Password')}</Form.Label>
-          <Form.Control type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
-        </Form.Group>
-        <Button variant="danger" type="submit" className="w-100">{t('Change Password')}</Button>
-      </Form>
+          <Form onSubmit={handlePasswordChange} className="mb-4">
+            <Form.Group className="mb-3">
+              <Form.Label>{t('New Password')}</Form.Label>
+              <Form.Control type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+            </Form.Group>
+            <Button variant="danger" type="submit" className="w-100">{t('Change Password')}</Button>
+          </Form>
 
-      <Form.Group className="mb-3">
-        <Form.Label>{t('Profile Picture')}</Form.Label>
-        <Form.Control type="file" accept="image/*" onChange={handleProfilePictureUpload} />
-      </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>{t('Profile Picture')}</Form.Label>
+            <Form.Control type="file" accept="image/*" onChange={handleProfilePictureUpload} />
+          </Form.Group>
 
-      <Form.Check type="switch" id="darkModeSwitch" label={t('Enable Dark Mode')} checked={darkMode} onChange={() => setDarkMode(!darkMode)} className="mb-3" />
+          <Form.Check type="switch" id="darkModeSwitch" label={t('Enable Dark Mode')} checked={darkMode} onChange={() => setDarkMode(!darkMode)} className="mb-3" />
 
-      <Form.Check type="switch" id="emailNotifications" label={t('Receive Email Notifications')} checked={emailNotifications} onChange={handleNotificationChange} className="mb-3" />
+          <Form.Check type="switch" id="emailNotifications" label={t('Receive Email Notifications')} checked={emailNotifications} onChange={handleNotificationChange} className="mb-3" />
 
-      <Form.Select className="mb-3" onChange={(e) => changeLanguage(e.target.value)}>
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="fr">Français</option>
-      </Form.Select>
+          <Form.Select className="mb-3" onChange={(e) => changeLanguage(e.target.value)}>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+          </Form.Select>
 
-      <Button variant="danger" onClick={handleDeleteAccount} className="w-100">{t('Delete Account')}</Button>
+          <div className="d-flex gap-2 profile-btn mt-4">
+            <Button variant="danger" onClick={handleDeleteAccount}>{t('Delete Account')}</Button>
+            <Button variant="secondary" onClick={() => navigate('/menu')}>Back to Menu</Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

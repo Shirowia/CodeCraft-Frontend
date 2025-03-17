@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import logo from '../assets/logo.png';
+import '../styles/login.css';
 import '../styles/general.css';
 
 const Signup = () => {
@@ -60,16 +61,23 @@ const Signup = () => {
     return errorMessages[code] || 'Failed to sign up. Please try again.';
   };
 
+  useEffect(() => {
+    document.body.classList.add('login-body');
+    return () => {
+      document.body.classList.remove('login-body');
+    };
+  }, []);
+
   return (
-    <div className="container vh-100 d-flex align-items-center justify-content-center">
-      <div className="row w-100">
+    <div className="login">
+      <div className="login-page-container">
         {/* Signup Form */}
-        <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <div className="shadow-lg p-5 rounded w-75 dark-mode">
-            <h2 className="text-center mb-4">Sign Up</h2>
+        <div className="login-form-container">
+          <div className="login-content">
+            <h2 className="text-center mb-4">SIGN UP</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label htmlFor="displayName">Full Name</label>
+                <label htmlFor="displayName">FULL NAME</label>
                 <input
                   type="text"
                   id="displayName"
@@ -81,7 +89,7 @@ const Signup = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email">EMAIL</label>
                 <input
                   type="email"
                   id="email"
@@ -93,7 +101,7 @@ const Signup = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">PASSWORD</label>
                 <input
                   type="password"
                   id="password"
@@ -105,7 +113,7 @@ const Signup = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="confirmPassword">CONFIRM PASSWORD</label>
                 <input
                   type="password"
                   id="confirmPassword"
@@ -117,19 +125,21 @@ const Signup = () => {
                 />
               </div>
               {error && <p className="text-danger">{error}</p>}
-              <button type="submit" className="btn btn-primary w-100" disabled={loading}>
-                {loading ? 'Signing up...' : 'Sign Up'}
+              <button type="submit" className="btn btn-primary" disabled={loading}>
+                {loading ? 'SIGNING UP...' : 'SIGN UP'}
               </button>
             </form>
             <div className="text-center mt-3">
-              Already have an account? <Link to="/login" className="text-primary">Login</Link>
+              Already have an account? <Link to="/login" className="text-primary">LOGIN</Link>
             </div>
           </div>
         </div>
 
         {/* Logo Section */}
-        <div className="col-md-6 d-flex align-items-center justify-content-center border-start border-2">
-          <img src={logo} alt="CodeCraft Logo" className="img-fluid w-75" />
+        <div className="login-logo-container">
+          <Link to="/homepage">
+          <img src={logo} alt="CodeCraft Logo" className="login-logo" />
+          </Link>
         </div>
       </div>
     </div>

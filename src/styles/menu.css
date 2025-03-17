@@ -1,0 +1,135 @@
+.menu-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Reduce the gap between menu columns */
+.menu-layout {
+  display: flex;
+  gap: 1.5rem;  /* Updated gap from 1rem */
+  padding: 1rem 0;
+  width: 100%;
+}
+
+/* nav-closed state for Menu */
+.menu-wrapper.nav-closed .flex-grow-1 {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.nav-closed .menu-layout {
+  padding: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Main menu container */
+.menu-body {
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url('../assets/mainBG.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+/* Scrollable content area */
+.flex-grow-1.p-4.overflow-auto {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+/* Menu layout and columns */
+.menu-layout {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+/* Main column styling */
+.menu-column-main {
+  flex: 1;
+  padding: 1rem;
+}
+
+.menu-column-main .card {
+  padding: 3rem;
+  height: 100%;
+}
+
+/* Secondary column styling */
+.menu-column-secondary {
+  width: 300px;
+  padding: 1rem;
+}
+
+.menu-column-secondary .card {
+  padding: 3rem;
+}
+
+/* Card content spacing */
+.card h3 {
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.card h5 {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+.card p {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+/* Progress sections spacing */
+.mb-4 {
+  margin-bottom: 2.5rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Button container spacing */
+.flex-container.gap-2 {
+  margin-top: 2.5rem;
+  padding: 0 1rem;
+  gap: 1.5rem;
+}
+
+.d-flex.flex-column.gap-2 {
+  padding: 1.5rem 1rem;
+  gap: 1.5rem !important;
+}
+
+/* Welcome header spacing */
+.flex-grow-1.p-4.overflow-auto h2 {
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+}
+
+/* Center aligned content spacing */
+.d-flex.justify-content-center {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+/* Alert spacing */
+.alert {
+  padding: 2rem;
+  margin: 1.5rem 1rem;
+}
+
+/* Progress sections spacing */
+.d-flex.flex-column {
+  padding: 1rem;
+}

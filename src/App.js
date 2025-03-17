@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -40,7 +40,8 @@ const App = () => {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="flex-container flex-center vh-100">
+
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -51,9 +52,10 @@ const App = () => {
   return (
     <DailyChallengeProvider>
       <Router>
-        <div className="container mt-4">
+        <div className="flex-container vh-100">
           {/* Main Content */}
-          <div className="mt-4 p-4 rounded shadow-sm">
+          <div className="flex-grow p-4 overflow-auto">
+
             <Routes>
               <Route path="/menu" element={<PrivateRoute user={user}><Menu /></PrivateRoute>} />
               <Route path="/daily-challenge" element={<PrivateRoute user={user}><DailyChallenge /></PrivateRoute>} />

@@ -449,164 +449,167 @@ const SkillTreePage = () => {
   const rootSkills = skillData.filter(skill => skill.dependencies.length === 0);
 
   return (
-    <div className="d-flex vh-100">
+    <div className="d-flex with-nav">
       <Navigation handleLogout={handleLogout} />
-      <div className="flex-grow-1 p-4">
+      <div className="flex-grow-1 p-4 overflow-auto">
         <h2 className="mb-4">Skill Tree</h2>
-        <div className="row">
-          <div className="col-md-8">
-            <div className="custom-skill-tree">
-              <div className="tree-container p-4">
-                <h3>Programming Path</h3>
-                <div className="skill-category">
-                  {rootSkills.map(rootSkill => (
-                    <div key={rootSkill.id} className="skill-branch mb-5">
-                      <div 
-                        className={`skill-node root-node ${skills[rootSkill.id]?.completed ? 'completed' : ''}`}
-                        onClick={() => {
-                          showSkillDetails(rootSkill.id);
-                          toggleSkillCompletion(rootSkill.id);
-                        }}
-                      >
-                        {rootSkill.title}
-                      </div>
-                      
-                      <div className="children-container">
-                        {rootSkill.children && rootSkill.children.map(childId => {
-                          const childSkill = skillMap[childId];
-                          if (!childSkill) return null;
-                          
-                          const isAvailable = skills[childId]?.available || isSkillAvailable(childId);
-                          const isCompleted = skills[childId]?.completed;
-                          
-                          return (
-                            <div key={childId} className="skill-branch level-1">
-                              <div 
-                                className={`skill-node ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : 'locked'}`}
-                                onClick={() => {
-                                  showSkillDetails(childId);
-                                  if (isAvailable) toggleSkillCompletion(childId);
-                                }}
-                              >
-                                {childSkill.title}
-                                {!isAvailable && <span className="lock-icon">🔒</span>}
-                              </div>
-                              
-                              <div className="children-container">
-                                {childSkill.children && childSkill.children.map(grandChildId => {
-                                  const grandChildSkill = skillMap[grandChildId];
-                                  if (!grandChildSkill) return null;
-                                  
-                                  const isGrandChildAvailable = skills[grandChildId]?.available || 
-                                                               (isCompleted && isSkillAvailable(grandChildId));
-                                  const isGrandChildCompleted = skills[grandChildId]?.completed;
-                                  
-                                  return (
-                                    <div key={grandChildId} className="skill-branch level-2">
-                                      <div 
-                                        className={`skill-node ${isGrandChildCompleted ? 'completed' : ''} ${isGrandChildAvailable ? 'available' : 'locked'}`}
-                                        onClick={() => {
-                                          showSkillDetails(grandChildId);
-                                          if (isGrandChildAvailable) toggleSkillCompletion(grandChildId);
-                                        }}
-                                      >
-                                        {grandChildSkill.title}
-                                        {!isGrandChildAvailable && <span className="lock-icon">🔒</span>}
-                                      </div>
-                                      
-                                      <div className="children-container">
-                                        {grandChildSkill.children && grandChildSkill.children.map(greatGrandChildId => {
-                                          const greatGrandChildSkill = skillMap[greatGrandChildId];
-                                          if (!greatGrandChildSkill) return null;
-                                          
-                                          const isGreatGrandChildAvailable = skills[greatGrandChildId]?.available || 
-                                                                          (isGrandChildCompleted && isSkillAvailable(greatGrandChildId));
-                                          const isGreatGrandChildCompleted = skills[greatGrandChildId]?.completed;
-                                          
-                                          return (
-                                            <div key={greatGrandChildId} className="skill-node-wrapper level-3">
-                                              <div 
-                                                className={`skill-node ${isGreatGrandChildCompleted ? 'completed' : ''} ${isGreatGrandChildAvailable ? 'available' : 'locked'}`}
-                                                onClick={() => {
-                                                  showSkillDetails(greatGrandChildId);
-                                                  if (isGreatGrandChildAvailable) toggleSkillCompletion(greatGrandChildId);
-                                                }}
-                                              >
-                                                {greatGrandChildSkill.title}
-                                                {!isGreatGrandChildAvailable && <span className="lock-icon">🔒</span>}
-                                              </div>
-                                            </div>
-                                          );
-                                        })}
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
+        
+        <div className="skill-tree-container">
+          {/* Left - Skill Tree */}
+          <div className="custom-skill-tree">
+            <div className="tree-container p-4">
+              <h3>Programming Path</h3>
+              <div className="skill-category">
+                {rootSkills.map(rootSkill => (
+                  <div key={rootSkill.id} className="skill-branch mb-5">
+                    <div 
+                      className={`skill-node root-node ${skills[rootSkill.id]?.completed ? 'completed' : ''}`}
+                      onClick={() => {
+                        showSkillDetails(rootSkill.id);
+                        toggleSkillCompletion(rootSkill.id);
+                      }}
+                    >
+                      {rootSkill.title}
                     </div>
-                  ))}
-                </div>
+                    
+                    <div className="children-container">
+                      {rootSkill.children && rootSkill.children.map(childId => {
+                        const childSkill = skillMap[childId];
+                        if (!childSkill) return null;
+                        
+                        const isAvailable = skills[childId]?.available || isSkillAvailable(childId);
+                        const isCompleted = skills[childId]?.completed;
+                        
+                        return (
+                          <div key={childId} className="skill-branch level-1">
+                            <div 
+                              className={`skill-node ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : 'locked'}`}
+                              onClick={() => {
+                                showSkillDetails(childId);
+                                if (isAvailable) toggleSkillCompletion(childId);
+                              }}
+                            >
+                              {childSkill.title}
+                              {!isAvailable && <span className="lock-icon">🔒</span>}
+                            </div>
+                            
+                            <div className="children-container">
+                              {childSkill.children && childSkill.children.map(grandChildId => {
+                                const grandChildSkill = skillMap[grandChildId];
+                                if (!grandChildSkill) return null;
+                                
+                                const isGrandChildAvailable = skills[grandChildId]?.available || 
+                                                             (isCompleted && isSkillAvailable(grandChildId));
+                                const isGrandChildCompleted = skills[grandChildId]?.completed;
+                                
+                                return (
+                                  <div key={grandChildId} className="skill-branch level-2">
+                                    <div 
+                                      className={`skill-node ${isGrandChildCompleted ? 'completed' : ''} ${isGrandChildAvailable ? 'available' : 'locked'}`}
+                                      onClick={() => {
+                                        showSkillDetails(grandChildId);
+                                        if (isGrandChildAvailable) toggleSkillCompletion(grandChildId);
+                                      }}
+                                    >
+                                      {grandChildSkill.title}
+                                      {!isGrandChildAvailable && <span className="lock-icon">🔒</span>}
+                                    </div>
+                                    
+                                    <div className="children-container">
+                                      {grandChildSkill.children && grandChildSkill.children.map(greatGrandChildId => {
+                                        const greatGrandChildSkill = skillMap[greatGrandChildId];
+                                        if (!greatGrandChildSkill) return null;
+                                        
+                                        const isGreatGrandChildAvailable = skills[greatGrandChildId]?.available || 
+                                                                        (isGrandChildCompleted && isSkillAvailable(greatGrandChildId));
+                                        const isGreatGrandChildCompleted = skills[greatGrandChildId]?.completed;
+                                        
+                                        return (
+                                          <div key={greatGrandChildId} className="skill-node-wrapper level-3">
+                                            <div 
+                                              className={`skill-node ${isGreatGrandChildCompleted ? 'completed' : ''} ${isGreatGrandChildAvailable ? 'available' : 'locked'}`}
+                                              onClick={() => {
+                                                showSkillDetails(greatGrandChildId);
+                                                if (isGreatGrandChildAvailable) toggleSkillCompletion(greatGrandChildId);
+                                              }}
+                                            >
+                                              {greatGrandChildSkill.title}
+                                              {!isGreatGrandChildAvailable && <span className="lock-icon">🔒</span>}
+                                            </div>
+                                          </div>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-          
-          <div className="col-md-4">
-            {selectedSkill ? (
-              <div className="skill-details p-4 bg-dark text-white rounded">
-                <h4>{selectedSkill.title}</h4>
-                <p>{selectedSkill.description}</p>
-                <div className="skill-status mt-3">
-                  <strong>Status:</strong> {skills[selectedSkill.id]?.completed ? 'Completed ✅' : 'Not Completed ❌'}
+
+          {/* Right - Skill Details */}
+          <div className="skill-details-wrapper">
+            <div className="sticky-top" style={{ top: '1rem' }}>
+              {selectedSkill ? (
+                <div className="skill-details p-4 bg-dark text-white rounded">
+                  <h4>{selectedSkill.title}</h4>
+                  <p>{selectedSkill.description}</p>
+                  <div className="skill-status mt-3">
+                    <strong>Status:</strong> {skills[selectedSkill.id]?.completed ? 'Completed ✅' : 'Not Completed ❌'}
+                  </div>
+                  
+                  {selectedSkill.children && selectedSkill.children.length > 0 && (
+                    <div className="unlocks-section mt-3">
+                      <strong>Unlocks:</strong>
+                      <ul>
+                        {selectedSkill.children.map(childId => {
+                          const childSkill = skillMap[childId];
+                          return childSkill ? (
+                            <li key={childId}>{childSkill.title}</li>
+                          ) : null;
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {selectedSkill.dependencies && selectedSkill.dependencies.length > 0 && (
+                    <div className="prerequisites-section mt-3">
+                      <strong>Prerequisites:</strong>
+                      <ul>
+                        {selectedSkill.dependencies.map(depId => {
+                          const depSkill = skillMap[depId];
+                          return depSkill ? (
+                            <li key={depId} className={skills[depId]?.completed ? 'text-success' : 'text-danger'}>
+                              {depSkill.title} {skills[depId]?.completed ? '✓' : '✗'}
+                            </li>
+                          ) : null;
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  <button 
+                    className={`btn ${skills[selectedSkill.id]?.completed ? 'btn-warning' : 'btn-success'} mt-3`}
+                    onClick={() => toggleSkillCompletion(selectedSkill.id)}
+                    disabled={!isSkillAvailable(selectedSkill.id) && !skills[selectedSkill.id]?.completed}
+                  >
+                    {skills[selectedSkill.id]?.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
+                  </button>
                 </div>
-                
-                {selectedSkill.children && selectedSkill.children.length > 0 && (
-                  <div className="unlocks-section mt-3">
-                    <strong>Unlocks:</strong>
-                    <ul>
-                      {selectedSkill.children.map(childId => {
-                        const childSkill = skillMap[childId];
-                        return childSkill ? (
-                          <li key={childId}>{childSkill.title}</li>
-                        ) : null;
-                      })}
-                    </ul>
-                  </div>
-                )}
-                
-                {selectedSkill.dependencies && selectedSkill.dependencies.length > 0 && (
-                  <div className="prerequisites-section mt-3">
-                    <strong>Prerequisites:</strong>
-                    <ul>
-                      {selectedSkill.dependencies.map(depId => {
-                        const depSkill = skillMap[depId];
-                        return depSkill ? (
-                          <li key={depId} className={skills[depId]?.completed ? 'text-success' : 'text-danger'}>
-                            {depSkill.title} {skills[depId]?.completed ? '✓' : '✗'}
-                          </li>
-                        ) : null;
-                      })}
-                    </ul>
-                  </div>
-                )}
-                
-                <button 
-                  className={`btn ${skills[selectedSkill.id]?.completed ? 'btn-warning' : 'btn-success'} mt-3`}
-                  onClick={() => toggleSkillCompletion(selectedSkill.id)}
-                  disabled={!isSkillAvailable(selectedSkill.id) && !skills[selectedSkill.id]?.completed}
-                >
-                  {skills[selectedSkill.id]?.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
-                </button>
-              </div>
-            ) : (
-              <div className="skill-details p-4 bg-dark text-white rounded">
-                <h4>Select a skill</h4>
-                <p>Click on any skill node to see its details and track your progress.</p>
-              </div>
-            )}
+              ) : (
+                <div className="skill-details p-4 bg-dark text-white rounded">
+                  <h4>Select a skill</h4>
+                  <p>Click on any skill node to see its details and track your progress.</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

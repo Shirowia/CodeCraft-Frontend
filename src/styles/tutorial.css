@@ -1,32 +1,114 @@
-.tutorial-content {
-  max-width: 900px;
+/* Center content when nav is closed */
+.nav-closed .flex-grow-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-closed .p-4 {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem !important;
+}
+
+.nav-closed .tutorial-content {
   margin: 0 auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Tutorial content container */
+.tutorial-content {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 20px;
+  padding: 3.5rem;
+  margin: 2rem auto;
+  background-color: rgba(33, 37, 41, 0.05);
+  border: 1px solid rgba(215, 169, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Section spacing */
+.tutorial-content h3 {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(215, 169, 255, 0.2);
+  color: rgb(215, 169, 255);
 }
 
 .tutorial-text {
+  margin: 2.5rem 0;
   line-height: 1.6;
   font-size: 1.1rem;
+  user-select: text;
+  cursor: text;
+  position: relative;
+  z-index: 3;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
 }
 
+.tutorial-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Code example styling */
 .code-example-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 3;
 }
 
 /* Improved navigation controls */
 .navigation-controls {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(215, 169, 255, 0.2);
+  position: relative;
+  z-index: 3;
+  width: 100%;
 }
 
 /* Fix for vertical sizing of buttons */
 .nav-button {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  min-width: 150px;
+  width: 150px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   line-height: 1.5;
-  height: auto;
-  min-height: 36px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 4;
+  cursor: pointer !important;
+}
+
+.nav-button:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.nav-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* Make code blocks more readable */
@@ -36,27 +118,42 @@ pre {
   margin-top: 10px !important;
   margin-bottom: 20px !important;
   overflow: auto;
+  cursor: text !important;
+  user-select: all !important;
 }
 
 /* Progress indicator */
 .progress-indicator {
   display: flex;
   justify-content: center;
-  margin: 0 10px;
+  gap: 1rem;
+  margin-bottom: 1rem;
   height: 36px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
 }
 
 .progress-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
   margin: 0 4px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.progress-dot:hover {
+  transform: scale(1.2);
+  background-color: rgba(215, 169, 255, 0.5);
 }
 
 .progress-dot.active {
-  background-color: #007bff;
+  background-color: rgb(215, 169, 255);
+  transform: scale(1.2);
 }
 
 /* Responsive fixes */
@@ -70,4 +167,305 @@ pre {
     order: -1;
     margin: 0 0 15px 0;
   }
+}
+
+/* Background styling to match DailyChallenge */
+.tutorial-body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('../assets/extra.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tutorial-body::before {
+  content: '';
+  background-image: url('../assets/extra.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Add container for interactive content */
+.tutorial-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(18, 18, 18, 0.05);
+}
+
+/* Header container styling to match DailyChallenge */
+.header-container {
+  width: 100%;
+  padding: 1rem 0;
+  background-color: rgba(18, 18, 18, 0.05);
+  border-bottom: 1px solid rgba(215, 169, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-container .d-flex {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(18, 18, 18, 0.05);
+}
+
+.header-title-section {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header title styling */
+.header-container h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.75rem;
+}
+
+/* Main content container */
+.flex-grow.overflow-auto,
+.flex-grow.p-4.overflow-auto {
+  padding: 0 !important;
+  margin: 0;
+}
+
+/* Style back button */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid rgb(215, 169, 255);
+  color: rgb(215, 169, 255);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(215, 169, 255);
+  color: #121212;
+  transform: scale(1.05);
+}
+
+/* Override any interfering styles */
+* {
+  pointer-events: auto !important;
+}
+
+.tutorial-content * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+}
+
+/* Navigation button container */
+.nav-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 15%;
+  margin-top: 3rem;
+}
+
+/* Center content when nav is closed */
+.with-nav.nav-closed .flex-grow-1 {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Header container for nav closed state */
+.nav-closed .header-container {
+  width: 100%;
+}
+
+.nav-closed .header-title-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.tutorial-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;    /* Center on screen */
+  padding: 2rem;     /* Add spacing on all sides */
+}
+
+/* Menu spacing */
+.with-nav {
+  gap: 2rem;  /* Adds space between navigation and content */
+}
+
+/* Adjust content wrapper with proper spacing */
+.content-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 0 2rem;
+}
+
+/* When nav is closed, maintain spacing */
+.nav-closed .content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 3rem; /* Increased padding when nav is closed */
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Adjust nav-closed state */
+.nav-closed .content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Remove conflicting margins/paddings */
+.p-4 {
+  padding: 1.5rem 0 !important;
+}
+
+/* More specific selectors to override general.css */
+.tutorial-wrapper .nav-closed .flex-grow-1,
+div.tutorial-wrapper .nav-closed .flex-grow-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 3rem 6rem;
+}
+
+.tutorial-wrapper .nav-closed .tutorial-content,
+div.tutorial-wrapper .nav-closed .tutorial-content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 2rem auto 4rem;
+  padding: 4rem;
+  background-color: rgba(33, 37, 41, 0.95);
+  border: 1px solid rgba(215, 169, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.tutorial-wrapper .nav-closed .header-container,
+div.tutorial-wrapper .nav-closed .header-container {
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(215, 169, 255, 0.1);
+}
+
+.tutorial-wrapper .nav-closed .header-title-section,
+div.tutorial-wrapper .nav-closed .header-title-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Remove conflicting styles from general.css */
+.tutorial-wrapper .nav-closed .p-4,
+.tutorial-wrapper .nav-closed .overflow-auto {
+  padding: 0;
+  margin: 0;
+}
+
+/* Component-specific nav-closed styles */
+.tutorial-wrapper .nav-closed .flex-grow-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 3rem 6rem;
+}
+
+.tutorial-wrapper .nav-closed .tutorial-content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 2rem auto 4rem;
+  padding: 4rem;
+  background-color: rgba(33, 37, 41, 0.95);
+  border: 1px solid rgba(215, 169, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.tutorial-wrapper .nav-closed .header-container {
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(215, 169, 255, 0.1);
+}
+
+.tutorial-wrapper .nav-closed .header-title-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Remove any general.css overrides */
+.tutorial-wrapper .nav-closed .p-4,
+.tutorial-wrapper .nav-closed .overflow-auto {
+  padding: 0;
+  margin: 0;
+}
+
+/* Tutorial component spacing */
+.tutorial-wrapper .nav-closed .flex-grow-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 3rem 6rem;
+}
+
+.tutorial-wrapper .tutorial-content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 2rem auto 4rem;
+  padding: 4rem;
+  border-radius: 24px;
+}
+
+/* Wrap the entire tutorial content in a container */
+.tutorial-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;    /* Center on screen */
+  padding: 2rem;     /* Add spacing on all sides */
+}
+
+/* Main content area */
+.tutorial-content {
+  background-color: rgba(33, 37, 41, 0.95);
+  border: 1px solid rgba(215, 169, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 2rem;     /* Inner spacing so text doesn't touch edges */
+  margin: 2rem 0;    /* Space above and below the content */
+}
+
+/* When nav is closed for tutorial, make sure the content stays centered */
+.tutorial-wrapper.nav-closed .flex-grow-1,
+.tutorial-wrapper.nav-closed .content-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
 }

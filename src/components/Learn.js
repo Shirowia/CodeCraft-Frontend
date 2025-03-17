@@ -161,7 +161,7 @@ const Learn = () => {
   }
 
   return (
-    <div className="d-flex vh-100">
+    <div className="d-flex with-nav">
       <Navigation handleLogout={handleLogout} />
       <div className="flex-grow-1 p-4 overflow-auto">
         <h2>Learn to Code</h2>
@@ -189,26 +189,23 @@ const Learn = () => {
           <div className="accordion" id="coursesAccordion">
             {courses.map((course, index) => (
               <div className="accordion-item bg-dark text-white" key={course.id}>
-                <h2 className="accordion-header" id={`heading${index}`}>
-                  <button 
-                    className={`accordion-button bg-dark text-white ${activeAccordion !== index ? 'collapsed' : ''}`}
-                    type="button" 
-                    onClick={() => toggleAccordion(index)}
-                    aria-expanded={activeAccordion === index}
-                    aria-controls={`collapse${index}`}
-                  >
-                    <div className="w-100">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <span>{course.name}</span>
-                        <span className="badge bg-primary">{courseProgress[course.id]?.progressPercentage || 0}% Complete</span>
-                      </div>
-                    </div>
-                  </button>
-                </h2>
+                <div className="course-header">
+                  <div className="d-flex">
+                    <span className="course-name">{course.name}</span>
+                    <span className="badge bg-primary">{courseProgress[course.id]?.progressPercentage || 0}% Complete</span>
+                    <button 
+                      className={`collapse-btn ${activeAccordion === index ? 'expanded' : ''}`}
+                      onClick={() => toggleAccordion(index)}
+                      aria-expanded={activeAccordion === index}
+                      aria-controls={`collapse${index}`}
+                    >
+                      <i className="fas fa-chevron-down"></i>
+                    </button>
+                  </div>
+                </div>
                 <div 
                   id={`collapse${index}`} 
-                  className={`accordion-collapse collapse ${activeAccordion === index ? 'show' : ''}`}
-                  aria-labelledby={`heading${index}`}
+                  className={`course-content ${activeAccordion === index ? 'show' : ''}`}
                 >
                   <div className="accordion-body">
                     <div className="mb-3">
@@ -279,8 +276,8 @@ const Learn = () => {
                           value={courseProgress[course.id]?.progressPercentage || 0} 
                           onChange={(e) => handleProgressChange(course.id, e.target.value)}
                         />
-                        <div className="d-flex justify-content-between align-items-center mt-2">
-                          <div className="form-check">
+                        <div className="progress-actions mt-3">
+                          <div className="form-check mb-2">
                             <input 
                               className="form-check-input" 
                               type="checkbox" 
@@ -292,14 +289,16 @@ const Learn = () => {
                               Mark as completed
                             </label>
                           </div>
-                          <a 
-                            href={course.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="btn btn-primary btn-sm"
-                          >
-                            Go to Course
-                          </a>
+                          <div className="text-end">
+                            <a 
+                              href={course.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="btn btn-primary btn-sm"
+                            >
+                              Go to Course
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>

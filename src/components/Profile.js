@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { getUser, updateUserProfile } from '../firebase/firebaseUtils';
 import { useNavigate } from 'react-router-dom';
-import Navigation from './Navigation';
 import '../styles/general.css';
 
 const Profile = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const navigate = useNavigate();
-
+  const [hasChanges, setHasChanges] = useState(false);
+  const [originalProfile, setOriginalProfile] = useState({});
+  
   const [profile, setProfile] = useState({
     fullName: '',
     email: '',
@@ -26,6 +27,7 @@ const Profile = () => {
         const userData = await getUser(user.uid);
         if (userData) {
           setProfile(userData);
+          setOriginalProfile(userData); // Store original data
         }
       };
 
@@ -34,7 +36,13 @@ const Profile = () => {
   }, [user]);
 
   const handleChange = (e) => {
-    setProfile({ ...profile, [e.target.name]: e.target.value });
+    const updatedProfile = { ...profile, [e.target.name]: e.target.value };
+    setProfile(updatedProfile);
+    // Check if any values are different from original
+    const changed = Object.keys(updatedProfile).some(
+      key => updatedProfile[key] !== originalProfile[key]
+    );
+    setHasChanges(changed);
   };
 
   const handleSubmit = async (e) => {
@@ -42,26 +50,22 @@ const Profile = () => {
     if (user) {
       const success = await updateUserProfile(user.uid, profile);
       if (success) {
-        alert('Profile updated successfully!');
+        navigate('/menu');
       } else {
         alert('Error updating profile.');
       }
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate('/login');
-    } catch (error) {
-      console.error('Logout Error:', error.message);
-    }
+  const handleCancel = () => {
+    navigate('/menu');
   };
 
   return (
-    <div className="d-flex vh-100">
-      <Navigation handleLogout={handleLogout} />
-      <div className="flex-grow-1 p-4">
+    <div className="flex-container">
+
+      <div className="flex-grow p-4 profile-center">
+        <div className="profile-container">
         <h2>User Profile</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -144,11 +148,26 @@ const Profile = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
-            Save Changes
-          </button>
+          <div className="d-flex gap-2 profile-btn mt-4">
+            <button 
+              type="submit" 
+              className="btn-secondary"
+              disabled={!hasChanges}
+            >
+              SAVE
+            </button>
+            <button 
+              type="button" 
+              className="btn-secondary"
+              onClick={handleCancel}
+            >
+              CANCEL
+            </button>
+          </div>
+
         </form>
       </div>
+    </div>
     </div>
   );
 };

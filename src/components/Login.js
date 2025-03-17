@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import '../styles/login.css';
+import '../styles/general.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -39,19 +40,33 @@ const Login = () => {
     return errorMessages[code] || 'Failed to login. Please try again.';
   };
 
+  useEffect(() => {
+    document.body.classList.add('login-body');
+    return () => {
+      document.body.classList.remove('login-body');
+    };
+  }, []);
+  
   return (
-    <div className="container vh-100 flex-container flex-center">
 
-      <div className="row w-100">
-        {/* Login Form */}
-        <div className="col-md-6 flex-container flex-center">
+    <div className="login">
+    <div className="login-page-container">
 
-          <div className="shadow-lg p-5 rounded w-75">
+      {/* Logo Section */}
+      <div className="login-logo-container">
+        <Link to="/homepage">
+          <img src={logo} alt="CodeCraft Logo" className="login-logo" />
+        </Link>
+        </div>
 
-            <h2 className="text-center mb-4">Login</h2>
+      <div className="login-form-container">
+
+        <div className="login-content">
+
+            <h2 className="text-center mb-4">LOGIN</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email">EMAIL</label>
                 <input
                   type="email"
                   id="email"
@@ -63,7 +78,7 @@ const Login = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">PASSWORD</label>
                 <input
                   type="password"
                   id="password"
@@ -75,26 +90,24 @@ const Login = () => {
                 />
               </div>
               {error && <p className="text-danger">{error}</p>}
-              <button type="submit" className="btn btn-primary w-100" disabled={loading}>
-                {loading ? 'Logging in...' : 'Login'}
+
+              <button type="submit" className="btn btn-primary" disabled={loading}>
+                {loading ? 'LOGGING IN...' : 'LOGIN'}
               </button>
+
             </form>
             <div className="text-center mt-3">
-              <Link to="/forgot-password" className="text-primary">Forgot Password?</Link>
+              <Link to="/forgot-password" className="text-secondary">Forgot Password?</Link>
             </div>
             <div className="text-center mt-2">
-              Don't have an account? <Link to="/signup" className="text-primary">Sign Up</Link>
+              Don't have an account? <Link to="/signup" className="text-primary">SIGN UP</Link>
             </div>
           </div>
         </div>
 
-        {/* Logo Section */}
-        <div className="col-md-6 flex-container flex-center border-start border-2">
-
-          <img src={logo} alt="CodeCraft Logo" className="img-fluid w-75" />
-        </div>
       </div>
-    </div>
+
+      </div>
   );
 };
 

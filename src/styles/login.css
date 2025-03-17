@@ -1,0 +1,106 @@
+.login-body{
+    
+        background-image: url('../assets/login.png');
+        background-color: rgba(32, 20, 2, 0.6);
+        background-blend-mode:color-burn; /*luminosity,exclusion*/
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+    
+}
+
+.login {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.login-page-container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    
+}
+
+.login-form-container {
+    background-image: url('../assets/login.png');
+    background-color: rgba(90, 59, 114, 0.5);
+    background-blend-mode:exclusion;
+    background-size: cover;
+    border-radius: 1.5rem;
+    border-style:outset;
+    border-color: rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin-right: 2rem;
+}
+
+.login-form-container .btn-primary {
+    width: 100%;
+    background-color: black;
+    border-radius: 1.7rem;
+}
+
+.login-form-container .btn-primary:hover {
+    background-color: white;
+}
+
+
+.login-form-container .btn-primary:disabled {
+    background-color: white;
+    cursor: not-allowed;
+}
+
+.login-form-container .text-secondary {
+    text-align: right;
+}
+
+.login-form-container .text-primary {
+    text-align: center;
+}
+
+
+.login-content {
+    width: 100%;
+}
+
+.login-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.login-logo {
+    max-width: 350px;
+    height: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .login-page-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .login-form-container {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .login-logo {
+        max-width: 200px;
+    }
+}
+
+/* Label styling */
+.login-form-container label {
+    letter-spacing: 0.5px;
+}

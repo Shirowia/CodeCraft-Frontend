@@ -133,10 +133,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
-  flex-shrink: 0; /* Prevents button from shrinking */
+  color: #ffffff !important; /* Ensure the icon is white */
+  font-size: 1.5rem;         /* Increase icon size for better visibility */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
 }
 
+.collapse-btn i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon when expanded */
 .collapse-btn.expanded i {
   transform: rotate(180deg);
 }

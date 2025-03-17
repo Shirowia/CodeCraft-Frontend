@@ -126,7 +126,7 @@
 .collapse-btn {
   background: none;
   border: none;
-  color: rgb(215, 169, 255);
+  color: #ffffff; /* change to white so it stands out */
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -140,11 +140,12 @@
 }
 
 .collapse-btn i {
+  font-size: 1.25rem; /* adjust this size as needed */
   transition: transform 0.3s ease;
 }
 
 .collapse-btn:hover {
-  color: #ffffff;
+  color: #deeeff; /* optional hover color */
 }
 
 /* Course Content Styling */
@@ -469,4 +470,35 @@
   margin: 2rem auto 4rem;
   padding: 4rem;
   border-radius: 24px;
+}
+
+.collapse-btn {
+  background-color: rgba(152, 117, 190, 0.7) !important; /* A semi-opaque purple background */
+  border: 2px solid rgba(215, 169, 255, 0.7) !important;  /* Light purple border for contrast */
+  border-radius: 50%;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff !important; /* Ensure the icon is white */
+  font-size: 1.5rem;         /* Increase icon size for better visibility */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+}
+
+.collapse-btn i {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate icon when expanded */
+.collapse-btn.expanded i {
+  transform: rotate(180deg);
+}
+
+/* Optional hover styling */
+.collapse-btn:hover {
+  background-color: rgba(152, 117, 190, 0.9) !important;
+  color: #deeeff !important;
 }

@@ -804,31 +804,6 @@ a:hover {
     text-align: center;
 }
 
-/* Remove these conflicting styles */
-.nav-closed .flex-grow-1 {
-  /* Remove */
-}
-
-.nav-closed .content-wrapper,
-.nav-closed .tutorial-content,
-.nav-closed .daily-challenge-content,
-.nav-closed .learn-content,
-.nav-closed .profile-container {
-  /* Remove */
-}
-
-.nav-closed .header-container {
-  /* Remove */
-}
-
-.nav-closed .header-title-section {
-  /* Remove */
-}
-
-.nav-closed .p-4 {
-  /* Remove */
-}
-
 /* Keep only the basic nav-closed state */
 .nav-closed .with-nav {
   margin-left: 0;

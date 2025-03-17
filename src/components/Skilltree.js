@@ -475,12 +475,12 @@ const SkillTreePage = () => {
                     <div className="children-container">
                       {rootSkill.children && rootSkill.children.map(childId => {
                         const childSkill = skillMap[childId];
-                        if (!childSkill) return null;
+                        if (!childSkill) return null; // Add return statement
                         
                         const isAvailable = skills[childId]?.available || isSkillAvailable(childId);
                         const isCompleted = skills[childId]?.completed;
                         
-                        return (
+                        return ( // Add explicit return
                           <div key={childId} className="skill-branch level-1">
                             <div 
                               className={`skill-node ${isCompleted ? 'completed' : ''} ${isAvailable ? 'available' : 'locked'}`}

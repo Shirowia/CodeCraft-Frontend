@@ -5,12 +5,14 @@
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-  max-width: 50vh;
   margin: 0;
   padding: 0;
-  position: fixed; /* Add this to ensure background covers entire viewport */
-  width: 100%;    /* Add this to ensure background spans full width */
-  z-index: -1;    /* Add this to place background behind content */
+  position: fixed;  /* Keep this to ensure background stays fixed */
+  width: 100%;     /* Change from max-width: 50vh to width: 100% */
+  height: 100%;    /* Add this to ensure full height coverage */
+  top: 0;         /* Add this to ensure proper positioning */
+  left: 0;        /* Add this to ensure proper positioning */
+  z-index: -1;    /* Keep this to place background behind content */
 }
 
 /* New styling for challenge example section */
@@ -135,6 +137,10 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 1;
 }
 
 /* nav-closed state */
